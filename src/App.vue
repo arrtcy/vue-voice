@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <headerTop />
-
     <router-view />
     <navBottom />
   </div>
@@ -22,6 +21,9 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+html {
+  font-size: 100px;
 }
 html,
 body,

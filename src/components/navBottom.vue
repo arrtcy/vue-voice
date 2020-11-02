@@ -1,7 +1,6 @@
 <template>
   <!-- 底部播放 -->
   <aplayer
-    autoplay
     :music="{
       title: '情非得已',
       artist: '田崇阳',
