@@ -8,17 +8,10 @@ const instance = axios.create({
 // 全局拦截
 // Add a request interceptor
 // 全局请求拦截,网络请求之前触发
-instance.interceptors.request.use(
-  function(config) {
-    // Do something before request is sent
-    config.headers.authorization = "Bearer " + localStorage.getItem("token");
-    return config;
-  },
-  function(error) {
-    // Do something with request error
-    return Promise.reject(error);
-  }
-);
+instance.interceptors.request.use(function(error) {
+  // Do something with request error
+  return Promise.reject(error);
+});
 
 // Add a response interceptor
 // 全局相应拦截，网络请求完成之后触发
@@ -28,7 +21,7 @@ instance.interceptors.response.use(
     // Do something with response data
     // console.log("请求数据成功");
     // console.log(response);
-    return response.data;
+    return response;
   },
   function(error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
