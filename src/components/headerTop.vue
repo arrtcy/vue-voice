@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" v-clock>
     <!-- 头部导航 -->
     <van-tabbar v-model="active" :fixed="false">
       <van-tabbar-item>
@@ -35,6 +35,9 @@ export default {
 </script>
 
 <style scoped>
+[v-clock] {
+  display: none;
+}
 .router-link-active {
   color: orange;
   font-size: 0.16rem;
