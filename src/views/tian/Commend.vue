@@ -5,7 +5,7 @@
     <div class="selection">
     
      <div  v-for="(item,i) in list" :key="item.id" class="mv">
-       <p class="top">{{item.name}}</p>
+       <p class="op">{{item.name}}</p>
        <div class="video">
         <video  ref="videoPlay"
          :src="videoURL[i]"
@@ -131,7 +131,7 @@ video{
  
   margin-top:0.5rem;
 }
-.top{
+.op{
   padding-left:0.10rem;
  margin-bottom:0.1rem ;
  font-size: 0.2rem;

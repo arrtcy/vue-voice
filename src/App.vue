@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <headerTop />
-
     <router-view />
-    <navBottom />
+    <keep-alive>
+      <navBottom></navBottom>
+    </keep-alive>
   </div>
 </template>
 
@@ -23,14 +24,13 @@ export default {
   margin: 0;
   padding: 0;
 }
-html{
+html {
   font-size: 100px;
 }
 html,
 body,
 #app {
   height: 100%;
-  
 }
 #app {
   font-size: 0.16rem;
