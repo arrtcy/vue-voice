@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Notify } from "vant";
+
 
 const instance = axios.create({
   timeout: 5000, // 请求超时时间,5s
@@ -16,23 +16,25 @@ instance.interceptors.request.use(function(error) {
 // Add a response interceptor
 // 全局相应拦截，网络请求完成之后触发
 instance.interceptors.response.use(
-  function(response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
-    // console.log("请求数据成功");
-    // console.log(response);
-    return response;
-  },
+//   function(response) {
+//     // Any status code that lie within the range of 2xx cause this function to trigger
+//     // Do something with response data
+//     // console.log("请求数据成功");
+//     // console.log(response);
+//     return response;
+//   },
   function(error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
-    // console.dir(error);
-    if (error && error.message.indexOf("timeout") > -1) {
-      console.log("网络超时了");
-      Notify({ type: "warning", message: "网络不稳定，请刷新重试" });
-    }
-    if (error.response && error.response.status === 401) {
-      Notify({ type: "warning", message: "用户信息异常，请重新登录" });
+    console.log(2222);
+  //   // Any status codes that falls outside the range of 2xx cause this function to trigger
+  //   // Do something with response error
+   console.dir(error.response);
+  //   if (error && error.message.indexOf("timeout") > -1) {
+  //     console.log("网络超时了");
+  //     Notify({ type: "warning", message: "网络不稳定，请刷新重试" });
+  //   }
+    if (error.response && error.response.status === 502) {
+      // Notify({ type: "warning", message: "用户信息异常，请重新登录" });
+      alert("用户信息异常，请重新登录");
       setTimeout(() => {
         window.location.href = "/#/login";
       }, 3000);
@@ -41,22 +43,10 @@ instance.interceptors.response.use(
   }
 );
 
-/**
- * get请求封装
- * @param {*} url
- * @param {*} params
- */
-// export function get(url, params) {
-//   //  参数一 表示请求地址
-//   //  参数二 表示配置项
-//   //    params表示url中传递的参数
-//   return instance.get(url, {
-//     params, // params: params
-//   });
-// }
 
-export const get = (url, params) => instance.get(url, { params });
 
+
+export const get=(url)=>instance.get(url)
 /**
  * 发起一个post请求
  * @param {*} url   请求地址

@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     play() {
-      console.log(this.$refs.audio.duration);
+
     },
   },
 };
