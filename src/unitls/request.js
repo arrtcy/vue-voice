@@ -55,7 +55,7 @@ instance.interceptors.response.use(
 //   });
 // }
 
-export const get = (url, params) => instance.get(url, { params });
+export const get = (url) => instance.get(url);
 
 /**
  * 发起一个post请求

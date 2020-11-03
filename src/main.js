@@ -5,12 +5,17 @@ import store from "./store";
 import Vant from "vant";
 import "vant/lib/index.css";
 import { Swipe, SwipeItem } from "vant";
+import { Card } from "vant";
 
+Vue.use(Card);
 Vue.use(Vant);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 
 Vue.config.productionTip = false;
+
+let bus = new Vue();
+Vue.prototype.bus = bus;
 
 new Vue({
   router,
