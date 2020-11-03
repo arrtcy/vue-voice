@@ -23,12 +23,17 @@ export default {
   margin: 0;
   padding: 0;
 }
+html{
+  font-size: 100px;
+}
 html,
 body,
 #app {
   height: 100%;
+  
 }
 #app {
+  font-size: 0.16rem;
   display: flex;
   flex-direction: column;
 }
