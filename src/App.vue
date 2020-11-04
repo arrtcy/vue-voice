@@ -1,19 +1,43 @@
 <template>
   <div id="app">
     <headerTop />
+    <!-- <button @click="showPopup">按钮</button> -->
     <router-view />
-    <navBottom />
+    <div @click.stop="showPopup">
+      <navBottom />
+    </div>
+    <van-popup
+      :lazy-render="false"
+      position="bottom"
+      :style="{ height: '50%' }"
+      v-model="show"
+    >
+      <Play></Play>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import navBottom from "@/components/navBottom";
 import headerTop from "@/components/headerTop";
+import Play from "@/components/Play";
 
 export default {
+  name: "App",
+  data() {
+    return {
+      show: false,
+    };
+  },
+  methods: {
+    showPopup() {
+      this.show = true;
+    },
+  },
   components: {
     navBottom,
     headerTop,
+    Play,
   },
 };
 </script>

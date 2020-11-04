@@ -13,7 +13,7 @@
       </van-tabbar-item>
 
       <van-tabbar-item
-        ><router-link :to="{ name: 'Login' }">搜索</router-link>
+        ><router-link :to="{ name: 'Find' }">搜索</router-link>
       </van-tabbar-item>
     </van-tabbar>
   </div>

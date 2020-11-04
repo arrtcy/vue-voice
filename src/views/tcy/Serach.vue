@@ -26,11 +26,11 @@
     <div class="day-list home-font">
       <div class="title">
         <h3>每日30首</h3>
-        <span @click="refresh()">换一批 <van-icon name="replay"/></span>
+        <span @click="refresh()">换一批 <van-icon name="replay" /></span>
       </div>
       <div class="day-listimg">
         <div v-for="v in listimg" :key="v.userId">
-          <img :src="v.coverImgUrl" alt="每日30首" style="width:1rem" />
+          <img :src="v.coverImgUrl" alt="每日30首" style="width: 1rem" />
           <p>{{ v.name }}</p>
         </div>
       </div>
