@@ -10,21 +10,15 @@ import "vant/lib/index.css";
 
 //import App from '. /App. vue'
 import VueLazyload from 'vue - lazyload' // 引入这个懒加载插件
-Vue . use(VueLazyload)
+
 //或者添加VueLazyload选项
 Vue. use(VueLazyload, {
 preLoad: 1.3,
-error: ' dist/error .png',
-loading: ' dist/loading.gif',
+error: '../src/img/timg.jpg',
+loading: '../src/img/tt.jpg',
 attempt: 1
 })
-new Vue({
-el:
-'body',
-components: {
-App
-}
-})
+
 /* 图片懒加载结束 */
 
 
