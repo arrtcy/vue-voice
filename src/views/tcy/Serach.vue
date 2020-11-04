@@ -101,7 +101,6 @@ export default {
     },
     async getsongs() {
       let res = await getsongs();
-      console.log(res.data.hotSongs);
       this.listsongs = res.data.hotSongs;
     },
     async onLoad() {
@@ -110,7 +109,6 @@ export default {
       let res = await getsongs(this.pagelist);
       this.pagelist += 2;
       this.list = [...this.list, ...res.data.hotSongs];
-      console.log(this.list);
       // 加载状态结束
       this.loading = false;
 
@@ -193,6 +191,4 @@ h3 {
   text-align: center;
   margin: 3px 5px;
 }
-
-
 </style>

@@ -1,11 +1,10 @@
 <template>
   <div class="login">
-    <van-image
-      round
-      width="23rem"
-      height="20rem"
+    <img
       src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png"
+      alt="logo"
     />
+
     <van-form @submit="onSubmit">
       <van-field
         v-model="phone"
@@ -89,15 +88,13 @@ export default {
 </script>
 
 <style scoped>
-html {
-  font-size: 100px;
-}
 .login {
   height: 100%;
   width: 100%;
-  position: fixed;
-
-  background: white;
+  position: absolute;
+  top: 0;
+  background: rgb(255, 255, 255);
+  z-index: 9999;
 }
 .login-choice {
   display: flex;
@@ -119,5 +116,9 @@ html {
   font-size: 0.12rem;
   margin-top: 0.3rem;
   text-align: center;
+}
+img {
+  display: block;
+  margin-left: 0.2rem;
 }
 </style>

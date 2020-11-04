@@ -12,7 +12,9 @@
         <router-link :to="{ name: 'Sort' }"> 分类</router-link>
       </van-tabbar-item>
 
-      <van-tabbar-item>搜索</van-tabbar-item>
+      <van-tabbar-item
+        ><router-link :to="{ name: 'Login' }">搜索</router-link>
+      </van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
