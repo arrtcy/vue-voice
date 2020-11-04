@@ -1,13 +1,10 @@
 <template>
-  <div class="header" v-clock>
+  <div class="header">
     <!-- 头部导航 -->
     <van-tabbar v-model="active" :fixed="false">
       <van-tabbar-item>
-        <router-link :to="{ name: 'Myself' }"
-          >我的</router-link
-        ></van-tabbar-item
-      >
-
+        <router-link :to="{ name: 'Myself' }">我的</router-link>
+      </van-tabbar-item>
       <van-tabbar-item>
         <router-link :to="{ name: 'Serach' }"
           >发现</router-link
@@ -35,9 +32,6 @@ export default {
 </script>
 
 <style scoped>
-[v-clock] {
-  display: none;
-}
 .router-link-active {
   color: orange;
   font-size: 0.16rem;
