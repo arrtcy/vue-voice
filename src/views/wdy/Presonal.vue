@@ -6,7 +6,7 @@
                     <van-notice-bar scrollable text="技术是开发它的人的共同灵魂。" />
                     <van-card
                        desc="描述信息"
-                       title="昵称"
+                       title=""
                        thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
                        @click="click1"
                     />
@@ -43,13 +43,13 @@
 
 <script>
 import { Dialog } from 'vant';
-// import {info} from '../../unitls/Login'
 export default {
      data() {
     return {
       show: false,
       active: 0,
       Dialog,
+      name
     };
   },
    methods: {
@@ -68,10 +68,10 @@ export default {
                message: '10分钟\n20分钟\n30分钟\n45分钟\n60分钟',
                })
                .then(() => {
-                 // on confirm
+                
                })
                .catch(() => {
-                 // on cancel
+                
                });
         },
         click1(){
@@ -79,7 +79,7 @@ export default {
         }
      },
     created() {
-        // this.showPopup()
+        this.$envetBus.$on('name',name)
     }
  }
 </script>

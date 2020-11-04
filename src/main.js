@@ -10,6 +10,9 @@ Vue.use(Vant);
 
 Vue.config.productionTip = false;
 
+ let $envetBus=new Vue()
+ Vue.prototype.$envetBus=$envetBus
+
 new Vue({
   router,
   store,

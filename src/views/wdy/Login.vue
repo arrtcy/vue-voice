@@ -7,26 +7,26 @@
         src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png"
       />
       <van-form @submit="onSubmit">
-  <van-field
+   <van-field
     v-model="phone"
     name="用户名"
     label="用户名"
     placeholder="用户名"
     :rules="[{ required: true, message: '请填写用户名' }]"
-  />
-  <van-field
+   />
+   <van-field
     v-model="password"
     type="password"
     name="密码"
     label="密码"
     placeholder="密码"
     :rules="[{ required: true, message: '请填写密码' }]"
-  />
-  <div style="margin: 16px;">
+   />
+   <div style="margin: 16px;">
     <van-button round block type="info" native-type="submit">
       登录
     </van-button>
-  </div>
+   </div>
 
     <div class="login-choice">
       <div> <van-icon name="chat-o" size="30"/>微信</div>
@@ -39,7 +39,7 @@
          <div class="agreement ">
           <input type="checkbox" @click="hand" name="" id=""  v-model="checked">同意《用户协议》《隐私政策》《儿童隐私政策》<br>《中国移动认证协议》
          </div>
-</van-form>
+   </van-form>
  
   </section>
 </template>
@@ -66,12 +66,13 @@ export default {
      let parmas={phone,password}
         if(this.checked){ 
         const res=await LOGIN(parmas)
-        console.log(res)
+        // let  name=res.data.profile.nickname
+        console.log(res.data.profile)
         if(res.status==200){
           alert('登录成功')
           localStorage.setItem("uid",phone)
            this.$router.push({name:'Presonal'})
-          
+            this.$envetBus.$emit('name',this.name)
         }else{
           alert("请检查用户名")
         }
@@ -85,15 +86,11 @@ export default {
 </script>
 
 <style scoped>
-
-html{
-  font-size: 100px;
-}
  .login{
    height: 100%;
    position: absolute;
    z-index: 999;
-   background: white;
+   background: rgb(172, 71, 71);
  }
  .login-choice{
    display: flex;
@@ -110,10 +107,8 @@ html{
 .login-reg{
   margin-top:0.3rem;
   text-align: center;
-   
 }
 .agreement{
-  
   font-size: 0.12rem;
   margin-top:0.3rem ;
   text-align: center;
