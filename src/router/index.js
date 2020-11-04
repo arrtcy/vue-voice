@@ -15,64 +15,56 @@ const routes = [
     component: () => import("../views/tcy/Serach.vue"),
   },
   {
-    path: '/sort',
-    name: 'Sort',
-    component: () => import( '../views/tian/Sort.vue')
+    path: "/sort",
+    name: "Sort",
+    component: () => import("../views/tian/Sort.vue"),
   },
   {
-    path:'/newDie',
-    name:'newDie',
-    component: () => import( '../views/tian/newDie.vue')
+    path: "/newDie",
+    name: "newDie",
+    component: () => import("../views/tian/newDie.vue"),
   },
   {
-    path:'/hotSearch',
-    name:'hotSearch',
-    component: () => import( '../views/tian/hotSearch.vue')
+    path: "/hotSearch",
+    name: "hotSearch",
+    component: () => import("../views/tian/hotSearch.vue"),
   },
-  
+
   {
-    path:'/newSong',
-    name:'newSong',
-    component: () => import( '../views/tian/newSong.vue')
-  },
-  {
-    path:'/hotSinger',
-    name:'hotSinger',
-    component: () => import( '../views/tian/hotSinger.vue')
+    path: "/newSong",
+    name: "newSong",
+    component: () => import("../views/tian/newSong.vue"),
   },
   {
-    path:'/hotPlat',
-    name:'hotPlat',
-    component: () => import( '../views/tian/hotPlat.vue')
+    path: "/hotSinger",
+    name: "hotSinger",
+    component: () => import("../views/tian/hotSinger.vue"),
   },
   {
-    path:'/Race',
-    name:'Race',
-    component: () => import( '../views/tian/Race.vue')
+    path: "/hotPlat",
+    name: "hotPlat",
+    component: () => import("../views/tian/hotPlat.vue"),
   },
   {
-    path:'/Commend',
-    name:'Commend',
-    component: () => import( '../views/tian/Commend.vue')
+    path: "/Race",
+    name: "Race",
+    component: () => import("../views/tian/Race.vue"),
   },
   {
-    path:'/commendSong',
-    name:'commendSong',
-    component: () => import( '../views/tian/commendSong.vue')
+    path: "/Commend",
+    name: "Commend",
+    component: () => import("../views/tian/Commend.vue"),
   },
   {
-    path:'/commendJe',
-    name:'commendJe',
-    component: () => import( '../views/tian/commendJe.vue')
+    path: "/commendSong",
+    name: "commendSong",
+    component: () => import("../views/tian/commendSong.vue"),
   },
   {
-    path:'/Try',
-    name:'try',
-    component: () => import( '../views/tian/Try.vue')
+    path: "/commendJe",
+    name: "commendJe",
+    component: () => import("../views/tian/commendJe.vue"),
   },
-  
-  
-  
 ];
 
 const router = new VueRouter({

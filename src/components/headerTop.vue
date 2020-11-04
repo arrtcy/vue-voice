@@ -10,7 +10,7 @@
           >发现</router-link
         ></van-tabbar-item
       >
-      <van-tabbar-item>分类</van-tabbar-item>
+      <van-tabbar-item :to="{ name: 'Sort' }">分类</van-tabbar-item>
       <van-tabbar-item>搜索</van-tabbar-item>
     </van-tabbar>
   </div>
