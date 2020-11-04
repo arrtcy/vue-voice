@@ -28,7 +28,7 @@
         <p><van-icon name="music-o" size="24px" />口袋彩铃</p>
       </div>
       <div id="footer">
-        <p>其他服务</p>
+        <p>其他服务</p> 
         <hr />
         <p><van-icon name="aim" size="24px" />个性装扮</p>
         <p @click="off"><van-icon name="clock-o" size="24px" />定时关闭</p>

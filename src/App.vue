@@ -2,7 +2,7 @@
   <div id="app">
     <headerTop />
     <router-view />
-    <navBottom />
+    <navBottom><div>132465789</div></navBottom>
   </div>
 </template>
 

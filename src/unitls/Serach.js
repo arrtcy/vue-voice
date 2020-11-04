@@ -24,3 +24,10 @@ export function getlyric(id) {
 export function geturl(id) {
   return axios.get(`https://music.163.com/song/media/outer/url?id=${id}.mp3`);
 }
+
+//获取用户最近播放歌曲
+export function getnear() {
+  return axios.get(
+    `http://net-music.penkuoer.com/user/record?uid=412308364&type=1`
+  );
+}
