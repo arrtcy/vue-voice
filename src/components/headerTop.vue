@@ -6,11 +6,12 @@
         <router-link :to="{ name: 'Myself' }">我的</router-link>
       </van-tabbar-item>
       <van-tabbar-item>
-        <router-link :to="{ name: 'Serach' }"
-          >发现</router-link
-        ></van-tabbar-item
-      >
-      <van-tabbar-item :to="{ name: 'Sort' }">分类</van-tabbar-item>
+        <router-link :to="{ name: 'Serach' }">发现</router-link>
+      </van-tabbar-item>
+      <van-tabbar-item>
+        <router-link :to="{ name: 'Sort' }"> 分类</router-link>
+      </van-tabbar-item>
+
       <van-tabbar-item>搜索</van-tabbar-item>
     </van-tabbar>
   </div>
@@ -32,7 +33,7 @@ export default {
 </script>
 
 <style scoped>
-.router-link-active {
+.router-link-exact-active {
   color: orange;
   font-size: 0.16rem;
   font-weight: 500;

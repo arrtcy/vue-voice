@@ -10,7 +10,7 @@ const routes = [
     component: () => import("../views/tcy/Myself.vue"),
   },
   {
-    path: "/serach",
+    path: "/",
     name: "Serach",
     component: () => import("../views/tcy/Serach.vue"),
   },
