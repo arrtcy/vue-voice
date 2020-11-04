@@ -31,6 +31,7 @@ body,
   height: 100%;
 }
 #app {
+  font-size: 0.16rem;
   display: flex;
   flex-direction: column;
 }
