@@ -2,20 +2,42 @@
   <div id="app">
     <headerTop />
     <router-view />
-    <keep-alive>
-      <navBottom></navBottom>
-    </keep-alive>
+    <navBottom />
+    <van-popup
+      :lazy-render="false"
+      position="bottom"
+      :style="{ height: '50%' }"
+      v-model="show"
+    >
+      <Play></Play>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import navBottom from "@/components/navBottom";
 import headerTop from "@/components/headerTop";
+import Play from "@/components/Play";
 
 export default {
+  name: "App",
+  data() {
+    return {
+      show: false,
+    };
+  },
+  created() {
+    this.bus.$on("lrc", this.showPopup);
+  },
+  methods: {
+    showPopup() {
+      this.show = true;
+    },
+  },
   components: {
     navBottom,
     headerTop,
+    Play,
   },
 };
 </script>

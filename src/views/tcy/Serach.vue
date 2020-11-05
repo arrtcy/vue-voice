@@ -129,10 +129,9 @@ export default {
         this.finished = true;
       }
     },
+    // eslint-disable-next-line no-unused-vars
     play(v) {
       //点击播放歌曲传入id
-      console.log(v);
-
       this.bus.$emit("play", v);
     },
   },

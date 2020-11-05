@@ -89,6 +89,11 @@ const routes = [
     meta: { title: "修改" },
     component: () => import("../views/wdy/Update.vue"),
   },
+  {
+    path: "/find",
+    name: "Find",
+    component: () => import("../views/nan/Find.vue"),
+  },
 ];
 
 const router = new VueRouter({

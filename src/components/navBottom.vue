@@ -48,11 +48,21 @@ export default {
       console.log(v);
       let res = await getlyric(v.id).catch((err) => console.log(err));
       let obj1 = {};
-      obj1.lrc = res.data.lrc.lyric;
+      if (res.data.lrc.lyric) {
+        obj1.lrc = res.data.lrc.lyric;
+      } else {
+        obj1.lrc = "暂无歌词";
+      }
+
       obj1.src = `https://music.163.com/song/media/outer/url?id=${v.id}.mp3`;
       obj1.title = v.name;
       obj1.artist = v.ar[0].name;
-      obj1.pic = v.al.picUrl;
+      if (v.al.picUrl) {
+        obj1.pic = v.al.picUrl;
+      } else {
+        obj1.pic = "/img/mv.png";
+      }
+
       this.obj = obj1;
       this.audio.unshift(obj1);
     },
@@ -78,7 +88,7 @@ export default {
       }
     },
     top() {
-      console.log(2222);
+      this.bus.$emit("lrc");
     },
   },
   mounted() {
