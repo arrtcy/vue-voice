@@ -93,38 +93,38 @@ export default {
 #nav,
 #main,
 #footer {
-  padding: 1rem;
+  padding: 0.16rem;
 }
 #nav {
-  height: 1rem;
+  height: 0.16rem;
   background-color: goldenrod;
 }
 #main {
-  margin-top: 1rem;
+  margin-top: 0.16rem;
   background-color: rgb(247, 247, 247);
 }
 #footer {
-  margin-top: 1rem;
+  margin-top: 0.16rem;
   background-color: rgb(247, 247, 247);
 }
 #main p {
-  margin-top: 0.5rem;
+  margin-top: 0.08rem;
 }
 #main p:hover {
   background-color: rgb(230, 230, 230);
 }
 #footer p {
-  margin-top: 0.5rem;
+  margin-top: 0.08rem;
 }
 #footer p:hover {
   background-color: rgb(230, 230, 230);
 }
 #set {
-  margin-top: 1rem;
+  margin-top: 0.16rem;
   display: flex;
   justify-content: space-around;
-  height: 5rem;
-  line-height: 5rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
   background-color: goldenrod;
 }
 </style>
