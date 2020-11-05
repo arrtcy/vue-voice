@@ -70,14 +70,7 @@ const routes = [
     name:'commendJe',
     component: () => import( '../views/tian/commendJe.vue')
   },
-  {
-    path:'/Try',
-    name:'try',
-    component: () => import( '../views/tian/Try.vue')
-  },
-  
-  
-  
+ 
 ];
 
 const router = new VueRouter({

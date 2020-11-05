@@ -25,6 +25,17 @@ export  function Official(){
         return axios.get(`http://net-music.penkuoer.com//top/album`);
         
         } 
+   
+  /* mv列表接口 */      
+export  function MvList(){
+    return axios.get(`http://net-music.penkuoer.com/mv/first`);
+    
+    }
+    
+/* 获取mv播放地址 */
 
-
+export  function Mv(v){
+    return axios.get(`http://net-music.penkuoer.com/mv/url?id=${v}`);
+    
+    }
 
