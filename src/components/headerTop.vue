@@ -1,11 +1,28 @@
 <template>
   <div class="header">
     <!-- 头部导航 -->
-    <van-tabs v-model="active">
-      <van-tab title="我的">内容 1</van-tab>
-      <van-tab title="发现">内容 2</van-tab>
-      <van-tab title="分类">内容 3</van-tab>
-    </van-tabs>
+    <van-tabbar v-model="active" :fixed="false">
+      <van-icon
+        name="exchange"
+        color="#1989fa"
+        size="20"
+        class="icon"
+        @click="showpop"
+      />
+      <van-tabbar-item>
+        <router-link :to="{ name: 'Myself' }">我的</router-link>
+      </van-tabbar-item>
+      <van-tabbar-item>
+        <router-link :to="{ name: 'Serach' }">发现</router-link>
+      </van-tabbar-item>
+      <van-tabbar-item>
+        <router-link :to="{ name: 'Sort' }"> 分类</router-link>
+      </van-tabbar-item>
+
+      <van-tabbar-item
+        ><router-link :to="{ name: 'Login' }">搜索</router-link>
+      </van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -20,8 +37,29 @@ export default {
     onChange(v) {
       console.log(v);
     },
+    showpop() {
+      this.$nextTick(()=>{
+        this.bus.$emit("showPopup");
+      })
+      
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.router-link-exact-active {
+  color: orange;
+  font-size: 0.2rem;
+  font-weight: 500;
+}
+.van-tabbar-item {
+  font-size: 0.14rem;
+}
+a {
+  color: #333;
+}
+.icon {
+  margin: 16px 12px;
+}
+</style>

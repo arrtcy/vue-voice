@@ -4,14 +4,22 @@ import router from "./router";
 import store from "./store";
 import Vant from "vant";
 import "vant/lib/index.css";
+import { Swipe, SwipeItem } from "vant";
+import { Card } from "vant";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 
+Vue.use(ElementUI);
 
+Vue.use(Card);
 Vue.use(Vant);
+Vue.use(Swipe);
+Vue.use(SwipeItem);
 
 Vue.config.productionTip = false;
 
- let $envetBus=new Vue()
- Vue.prototype.$envetBus=$envetBus
+let bus = new Vue();
+Vue.prototype.bus = bus;
 
 new Vue({
   router,
