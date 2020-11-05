@@ -82,7 +82,7 @@ export default {
     },
   },
   mounted() {
-    this.loadnearSongs();
+    // this.loadnearSongs();
     document.querySelector("audio").autoplay = true;
   },
 };
