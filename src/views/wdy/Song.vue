@@ -19,10 +19,21 @@
           </div>
           <div id="main">
             <ul>
-              <li v-for="(item,i) in songList" :key='item._id' @click="click(i)"><span>{{item.name}}</span>
-                 <div>
-                   <van-icon name="play-circle-o"/></div>
+              <li v-for="(item,i) in songList" :key='item._id'>
+                <span style="">{{item.name}}</span> 
+            <div style="display:flex">
+                 <span style="color:red;font-weight:200;">{{item.ar[0].name}}</span>
+                 <span><van-icon name="play-circle-o" @click="click(i)"/></span> 
+                 <span><van-icon name="weapp-nav" @click="showPopup"/></span> 
+            </div>
               </li>
+              <van-popup v-model="show" position="bottom" :style="{ height:'60%'}">
+                <van-card 
+                 :title="obj.name"
+                  :desc="obj.description"
+                 :thumb="obj.coverImgUrl"
+                />
+               </van-popup>
             </ul>
           </div>
     </section>
@@ -35,7 +46,8 @@ export default {
     return{
       perinfo:{},
       songList:[],
-      obj:{}
+      obj:{},
+      show:false
     }
   },
   methods: {
@@ -48,12 +60,16 @@ export default {
     },
     async song(v){
       const res=await songs(v)
-      // console.log(res.data.playlist.tracks)
+      console.log(res.data.playlist.tracks)
       this.songList=res.data.playlist.tracks
     },
     click(i){
       this.bus.$emit("play",this.songList[i])
-    }
+    },
+   
+    showPopup() {
+      this.show = true;
+    },
   },
   created() {
     this.bus.$on("info", this.info);

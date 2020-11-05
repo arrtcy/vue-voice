@@ -12,7 +12,7 @@
       <van-grid-item icon="live" text="视频" />
     </van-grid>
     <van-grid>
-      <van-grid-item icon="friends" text="我的好友" />
+      <van-grid-item icon="friends" text="我的好友"  />
       <van-grid-item icon="invition" text="收藏" />
       <van-grid-item icon="cluster" text="电台" />
       <van-grid-item icon="weapp-nav" text="音乐应用" />
