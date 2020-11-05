@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     async play(v) {
-      console.log(v);
+      // console.log(v);
       let res = await getlyric(v.id).catch((err) => console.log(err));
       let obj1 = {};
       obj1.lrc = res.data.lrc.lyric;

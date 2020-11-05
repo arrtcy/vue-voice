@@ -9,9 +9,9 @@
       <div id="top">
         <van-notice-bar scrollable text="技术是开发它的人的共同灵魂。" />
         <van-card
-          desc="描述信息"
-          title="昵称"
-          thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
+          :desc="use.signature"
+          :title="use.nickname"
+          :thumb="use.avatarUrl"
           @click="click1"
         />
       </div>
@@ -47,6 +47,7 @@
 
 <script>
 import { Dialog } from "vant";
+// import { config } from 'vue/types/umd';
 // import {info} from '../../unitls/Login'
 export default {
   data() {
@@ -54,10 +55,12 @@ export default {
       show: false,
       active: 0,
       Dialog,
+      use:{}
     };
   },
   methods: {
     showPopup() {
+      
       // const  res=await info()
       // console.log(res)
       this.show = true;
@@ -81,9 +84,13 @@ export default {
     click1() {
       this.$router.push({ name: "Update" });
     },
+  
   },
   created() {
-    // this.showPopup()
+     this.bus.$on("showPopup",this.showPopup)
+     this.bus.$on('info',this.info)
+    this.use=JSON.parse(localStorage.getItem("user"))
+     console.log(this.use)
   },
 };
 </script>
@@ -126,5 +133,8 @@ export default {
   height: 0.8rem;
   line-height: 0.8rem;
   background-color: goldenrod;
+}
+.van-card__title{
+  font-size: 0.16rem;
 }
 </style>

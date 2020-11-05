@@ -89,6 +89,12 @@ const routes = [
     meta: { title: "修改" },
     component: () => import("../views/wdy/Update.vue"),
   },
+  {
+    path: "/song",
+    name: "Song",
+    meta: { title: "歌曲" },
+    component: () => import("../views/wdy/Song.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -6,7 +6,7 @@
           </div>
           <div id="nav">
             <van-card 
-                 desc="请编辑"
+                 :desc="obj.description"
                  :title="obj.name"
                  :thumb="obj.coverImgUrl"
                 />
@@ -21,7 +21,6 @@
             <ul>
               <li v-for="(item,i) in songList" :key='item._id' @click="click(i)"><span>{{item.name}}</span>
                  <div>
-                  
                    <van-icon name="play-circle-o"/></div>
               </li>
             </ul>
@@ -45,10 +44,10 @@ export default {
     },
     info(v) {
       this.perinfo = v;
-      // console.log(this.perinfo.nickname);
+      console.log(this.perinfo.nickname);
     },
-    async song(o){
-      const res=await songs(o)
+    async song(v){
+      const res=await songs(v)
       // console.log(res.data.playlist.tracks)
       this.songList=res.data.playlist.tracks
     },
