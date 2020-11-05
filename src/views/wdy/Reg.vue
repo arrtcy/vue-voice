@@ -1,12 +1,8 @@
 <template>
   <div class="Reg">
     <div class="content">
-      <van-image
-        round
-        width="23rem"
-        height="20rem"
-        src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png"
-      />
+
+      <img src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png" alt="">
 
       <van-form @submit="onSubmit">
         <van-field
@@ -100,11 +96,15 @@ export default {
 .content {
   flex: 1;
   overflow: auto;
+  width: 375px
 }
 .reg-login {
   text-align: center;
 }
 .capt {
   position: relative;
+}
+.content img{
+  margin-left: 0.25rem;
 }
 </style>
