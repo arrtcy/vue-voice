@@ -1,16 +1,21 @@
 import axios from "axios"
 //新碟上架
-export  function newDie(id){
-
-    //id
-    //console.log(id);
-return axios.get(`http://net-music.penkuoer.com//top/album?offset=${id}&limit=24`);
+export  function newDie(){
+return axios.get(`http://net-music.penkuoer.com/personalized/newsong`)
 }
-//
+
+
 export  function hotSearch(){
     return axios.get(`http://net-music.penkuoer.com/personalized`);
-    
+
     }
+
+export  function newSong(){
+        return axios.get(`http://net-music.penkuoer.com/top/song?type=8`);   
+        }
+
+    
+
 export  function Boutique(){
         return axios.get(`http://net-music.penkuoer.com/dj/recommend`);
         
