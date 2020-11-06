@@ -11,12 +11,13 @@
           <h3>{{ name }}</h3>
           <h4>{{ artist }}</h4>
           <div class="ball" ref="ball" @click="control">
-            <img style="width: 100%" :src="imgUrl ? imgUrl : record" />
+            <img
+              ref="img"
+              style="width: 100%"
+              :src="imgUrl ? imgUrl : record"
+            />
           </div>
           <div class="control">
-            <audio ref="audio" :src="playUrl" autoplay controls>
-              您的浏览器不支持 audio 元素。
-            </audio>
             <van-icon
               :name="like == true ? 'like' : 'like-o'"
               class="collect-btn"
@@ -44,7 +45,7 @@
 </template>
 
 <script>
-import { getPlaySong, getSongWords, getSongComment } from "../utils/request";
+import { getSongWords, getSongComment } from "../utils/request";
 
 export default {
   data() {
@@ -64,42 +65,29 @@ export default {
   created() {
     // 事件总线监听分发歌曲信息时间
     this.bus.$on("play", this.play);
-    // setInterval(() => {
-    //   let likeSong = JSON.parse(localStorage.getItem("likeSong"));
-    //   if (likeSong) {
-    //     if (likeSong.findIndex((item) => this.id == item.id) > -1) {
-    //       this.like = true;
-    //     } else {
-    //       this.like = false;
-    //     }
-    //   }
-    // }, 1000);
   },
   mounted() {
-    // setInterval(() => {
-    //   if (this.$refs.audio.paused) {
-    //     this.$refs.ball.style = "animation-play-state:paused";
-    //   } else {
-    //     this.$refs.ball.style = "animation-play-state:running";
-    //   }
-    // }, 500);
+    this.$nextTick(() => {
+      this.rota();
+    });
   },
   methods: {
     // 获取监听事件分发的歌曲信息
     async play(obj) {
-      console.log(obj);
-      let result = await getPlaySong(obj.id);
-      console.log(result);
       let SongWordsResult = await getSongWords(obj.id);
       this.songWords = SongWordsResult.replaceAll(/\[(.+?)\]/g, "<br>");
       let commentResult = await getSongComment(obj.id);
       this.comments = commentResult;
-      this.playUrl = result;
       this.name = obj.name;
       this.artist = obj.artist;
       this.id = obj.id;
-      this.imgUrl = obj.al.picUrl;
+      if (obj.al && obj.al.picUrl) {
+        this.imgUrl = obj.al.picUrl;
+      } else {
+        this.imgUrl = "/img/mv.png";
+      }
     },
+    //暂时没用
     likeSong() {
       this.like = !this.like;
       if (this.like == true) {
@@ -127,13 +115,10 @@ export default {
       }
     },
     control() {
-      let audio = this.$refs.audio;
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-        this.flag = false;
-      }
+      this.bus.$emit("pause");
+    },
+    rota() {
+      console.log(this.$refs.img);
     },
   },
 };

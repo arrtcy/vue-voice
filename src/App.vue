@@ -3,14 +3,16 @@
     <headerTop />
     <router-view />
     <navBottom />
-    <van-popup
-      :lazy-render="false"
-      position="bottom"
-      :style="{ height: '50%' }"
-      v-model="show"
-    >
-      <Play></Play>
-    </van-popup>
+    <keep-alive>
+      <van-popup
+        :lazy-render="false"
+        position="bottom"
+        :style="{ height: '50%' }"
+        v-model="show"
+      >
+        <Play></Play>
+      </van-popup>
+    </keep-alive>
   </div>
 </template>
 

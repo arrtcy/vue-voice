@@ -8,11 +8,11 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <van-cell v-for="(item, i) in list" :key="i"    @click="playClick(item)"   >
-          <div >
+        <van-cell v-for="(item, i) in list" :key="i" @click="playClick(item)">
+          <div>
             <span> {{ item.name }}</span>
             <!-- <span>{{item.subType}}</span> -->
-            <img :src="item.picUrl" alt=""   />
+            <img :src="item.picUrl" alt="" />
           </div>
         </van-cell>
       </van-list>
@@ -36,25 +36,23 @@ export default {
   created() {},
   methods: {
     //点击播放
-    playClick(items){
-        console.log(items.copyrightId)
-
-
+    playClick(items) {
+      console.log(items);
     },
 
-
+    //tcy添加   下面的加载更多都是重复的没必要。而且这些不是歌，不能放，只是一个类，需要找到里面的歌曲 然后发送play事件，才能播放。
 
     /* 加载更多 */
     async onLoad() {
       //console.log(this.page);
-      this.loading = true
+      this.loading = true;
       let res = await hotSearch(this.page);
       this.page++;
       console.log(res.data.result);
-     // console.log(this.list, res.data.albums);
-// if(this.page>=21){
-         this.loading = false
-        // }
+      // console.log(this.list, res.data.albums);
+      // if(this.page>=21){
+      this.loading = false;
+      // }
       this.list = [...this.list, ...res.data.result];
     },
     onRefresh() {
@@ -86,7 +84,7 @@ export default {
   width: 1.1rem;
   height: 1.5rem;
   border: 0.01rem solid black;
-   border-radius: 5px;
+  border-radius: 5px;
 }
 img {
   display: block;
@@ -99,6 +97,6 @@ span {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-   text-align: center;
+  text-align: center;
 }
 </style>

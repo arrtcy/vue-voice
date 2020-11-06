@@ -132,6 +132,7 @@ export default {
     // eslint-disable-next-line no-unused-vars
     play(v) {
       //点击播放歌曲传入id
+      this.$nextTick(() => {});
       this.bus.$emit("play", v);
     },
   },
@@ -164,7 +165,7 @@ a {
   align-items: center;
 }
 .title h3 {
-  font-size: 0.16rem;
+  font-size: 0.2rem;
   font-weight: 500;
   padding: 0.03rem;
 }

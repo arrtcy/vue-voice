@@ -2,6 +2,7 @@
   <!-- 底部播放 -->
   <div class="aplay">
     <aplayer
+      ref="audio"
       id="aplayer"
       :list="audio"
       :showLrc="true"
@@ -35,6 +36,7 @@ export default {
           pic: "/img/mv.png",
         },
       ],
+      au: "",
     };
   },
   components: {
@@ -42,22 +44,27 @@ export default {
   },
   created() {
     this.bus.$on("play", this.play);
+    this.bus.$on("pause", this.control);
   },
   methods: {
     async play(v) {
       console.log(v);
-      let res = await getlyric(v.id).catch((err) => console.log(err));
+      let res = await getlyric(v.id); // .catch((err) => console.log(err));
       let obj1 = {};
       if (res.data.lrc.lyric) {
         obj1.lrc = res.data.lrc.lyric;
       } else {
         obj1.lrc = "暂无歌词";
       }
-
       obj1.src = `https://music.163.com/song/media/outer/url?id=${v.id}.mp3`;
       obj1.title = v.name;
-      obj1.artist = v.ar[0].name;
-      if (v.al.picUrl) {
+      // console.log(v.ar);
+      if (v.ar && v.ar[0].name) {
+        obj1.artist = v.ar[0].name;
+      } else {
+        obj1.artist = v.artists[0].name;
+      }
+      if (v.al && v.al.picUrl) {
         obj1.pic = v.al.picUrl;
       } else {
         obj1.pic = "/img/mv.png";
@@ -71,7 +78,6 @@ export default {
         // let uid = localStorage.getItem("uid");
         let res = await getnear();
         let arr = [];
-        console.log(res);
         res.data.weekData.forEach((v) => {
           arr.push({
             id: v.song.id,
@@ -83,17 +89,25 @@ export default {
           arr.forEach((v) => {
             getlyric(v.id).then((res) => (v.lrc = res.data.lrc.lyric));
           });
-          console.log(arr);
         });
       }
     },
     top() {
       this.bus.$emit("lrc");
     },
+    control() {
+      if (this.au.paused) {
+        this.au.play();
+      } else {
+        this.au.pause();
+      }
+    },
   },
   mounted() {
     // this.loadnearSongs();
     document.querySelector("audio").autoplay = true;
+
+    this.au = this.$refs.audio.$refs.audio;
   },
 };
 </script>

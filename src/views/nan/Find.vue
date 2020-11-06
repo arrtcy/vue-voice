@@ -10,13 +10,14 @@
         <div @click="onSearch">搜索</div>
       </template>
     </van-search>
+
     <van-card
       v-for="(item, index) in searchSong"
       :key="index"
       :desc="item.artists[0].name"
       :title="item.name"
       :thumb="item.artists[0].img1v1Url"
-      @click="playHandle(item.id, item.name, item.artists[0].name)"
+      @click="playHandle(item)"
     />
     <div class="tag">
       <van-tag
@@ -47,25 +48,27 @@ export default {
       let result = await getSearchSong(this.keyWords);
       this.searchSong = result;
     },
-    // 获取热门歌曲
+    // 获取热门歌曲   10个标签
     async loadhotSong() {
       let result = await getHotSong();
+
       if (this.searchSong[0]) {
         this.hotSongs = [];
       } else {
         this.hotSongs = result;
       }
     },
-    // 加载热门歌曲信息
+    // 加载热门歌曲信息   热门标签内部的歌曲
     async searchHotsong(songName) {
       let result = await getSearchSong(songName);
+      // console.log(result);
+
       this.keyWords = songName;
       this.searchSong = result;
     },
     // 向播放页分发歌曲的id，歌名和歌手
-    playHandle(id, name, artist) {
-      console.log({ id, name, artist });
-      this.bus.$emit("play", { id, name, ar: [{ name: artist }] });
+    playHandle(item) {
+      this.bus.$emit("play", item);
     },
   },
   created() {
