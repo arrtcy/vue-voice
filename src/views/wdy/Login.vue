@@ -76,7 +76,7 @@ export default {
           alert("登录成功");
           localStorage.setItem("uid", res.data.account.id);
           localStorage.setItem("user",JSON.stringify(res.data.profile)) 
-          this.$router.push({ name: "Presonal" });
+          this.$router.push({ name: "Myself" });
         } else {
           alert("请检查用户名");
         }

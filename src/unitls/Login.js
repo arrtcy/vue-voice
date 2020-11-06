@@ -5,7 +5,6 @@ export function LOGIN(parmas) {
          return axios.get(
            `http://net-music.penkuoer.com/login/cellphone?phone=${parmas.phone}&password=${parmas.password}`
          );
-        
        }
 export function update(parmas){
   return axios.post(
@@ -25,7 +24,7 @@ export function songs(v) {
 }
 
 export function near(v) {
-  console.log(v)
+  // console.log(v)
   return axios.get(
     `http://net-music.penkuoer.com/playlist/detail?id=${v.userId}&type=1`
   );

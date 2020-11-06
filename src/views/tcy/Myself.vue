@@ -1,6 +1,17 @@
 <template>
   <section class="myself">
+    <van-card v-show="isShow"
+    
+
+         thumb="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604677154651&di=93111c8f71cae33eb1cd664a1cf86ee6&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fb21bb051f81986184dd851494ced2e738ad4e664.jpg"
+        >
+       <template #footer>
+          <van-button id="btn" @click="loginClick">立即登录>>></van-button>
+      </template>
+    </van-card>
+
     <van-card
+      v-show="ok"
       :desc="use.signature"
       :title="use.nickname"
       :thumb="use.avatarUrl"
@@ -19,6 +30,9 @@
     </van-grid>
     <van-tabs v-model="activeName">
       <van-tab title="创建歌单" name="a">
+        <h3 v-show="isShow">
+            暂无收藏歌单，请登录后获取。
+        </h3>
         <van-card
           v-for="item in playList"
           :key="item._id"
@@ -30,6 +44,9 @@
       </van-tab>
 
       <van-tab title="收藏歌单" name="b">
+        <h3 v-show="isShow">
+            暂无收藏歌单，请登录后获取。
+        </h3>
         <van-card
           v-for="item in topplayList"
           :key="item._id"
@@ -41,6 +58,9 @@
       </van-tab>
 
       <van-tab title="最近播放" name="c">
+        <h3 v-show="isShow">
+            暂无收藏歌单，请登录后获取。
+        </h3>
         <div id="main">
           <ul>
             <li v-for="(v, i) in nearList" :key="v.id" @click="click1(i)">
@@ -65,11 +85,14 @@ export default {
       activeName: "a",
       use: {},
       playList: [],
-      topplayList: [],
+      topplayList:[],
       nearList: [],
+      isShow:false,
+      ok:false
     };
   },
   methods: {
+
     click(item) {
       this.$router.push({
         name: "Song",
@@ -81,32 +104,48 @@ export default {
         },
       });
     },
+    loginClick(){
+      
+      this.$router.push({name:"Login"})
+    },
 
     click1(i) {
       this.bus.$emit("play", this.nearList[i]);
     },
-  },
-  async created() {
-    this.use = JSON.parse(localStorage.getItem("user"));
-    // console.log(this.use);
-    const res = await info(this.use);
-    // console.log(res.data.playlist);
-    this.playList = res.data.playlist;
 
-    this.topplayList = this.playList.splice(12);
-    // console.log(this.topplayList)
-    // console.log(this.playList)
-    const res1 = await near(this.use);
-    console.log(res1.data.playlist.tracks);
-    this.nearList = res1.data.playlist.tracks;
-    this.bus.$emit("near", this.nearList);
+  },
+  async created(){
+      if(localStorage.getItem("user")){
+
+            this.use = JSON.parse(localStorage.getItem("user"));
+            // console.log(this.use);
+            const res = await info(this.use);
+            // console.log(res.data.playlist);
+            this.playList = res.data.playlist;
+            this.topplayList = this.playList.splice(12);
+            // console.log(this.topplayList)
+            // console.log(this.playList)
+            const res1 = await near(this.use);
+            // console.log(res1.data.playlist.tracks);
+            this.nearList = res1.data.playlist.tracks;
+            this.bus.$emit("near", this.nearList);
+            this.ok=true
+
+      }else{
+
+            this.isShow=true
+
+      }
+    
   },
 };
 </script>
 <style scoped>
+
 .myself {
   padding: 0.1rem;
 }
+
 .van-card__title {
   font-size: 0.16rem;
 }
@@ -127,5 +166,19 @@ export default {
 #main .van-icon {
   line-height: 0.5rem;
   font-size: 0.3rem;
+}
+
+#btn{
+  width: 200px;
+  height: 34px;
+  background-color: rgb(240, 240, 240);
+  position: absolute;
+  top:0.4rem;
+  left: 1.3rem;
+}
+
+h3{
+  margin-top:0.6rem ;
+  text-align: center;
 }
 </style>
