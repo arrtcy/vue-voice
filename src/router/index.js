@@ -94,6 +94,12 @@ const routes = [
     name: "Find",
     component: () => import("../views/nan/Find.vue"),
   },
+  {
+    path: "/song",
+    name: "Song",
+    meta: { title: "歌曲" },
+    component: () => import("../views/wdy/Song.vue"),
+  },
 ];
 
 const router = new VueRouter({

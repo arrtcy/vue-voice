@@ -71,10 +71,11 @@ export default {
       let parmas = { phone, password };
       if (this.checked) {
         const res = await LOGIN(parmas);
-        console.log(res);
+        console.log(res.data.profile);
         if (res.status == 200) {
           alert("登录成功");
-          localStorage.setItem("uid", phone);
+          localStorage.setItem("uid", res.data.account.id);
+          localStorage.setItem("user",JSON.stringify(res.data.profile)) 
           this.$router.push({ name: "Presonal" });
         } else {
           alert("请检查用户名");

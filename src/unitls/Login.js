@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export function LOGIN(parmas) {
          return axios.get(
            `http://net-music.penkuoer.com/login/cellphone?phone=${parmas.phone}&password=${parmas.password}`
@@ -12,9 +13,21 @@ export function update(parmas){
   );
 }
 
-export function info() {
+export function info(v) {
+  return axios.get(`https://music.api.mcloc.cn/user/playlist?uid=${v.userId}`);
+}
+
+export function songs(v) {
+  // console.log(v)
   return axios.get(
-    `http://net-music.penkuoer.com/user/subcount/token="df69a51f24b2ed152e029f5854bb910d9726f7a8e50fd0e98e3fc8e5cb79f5630931c3a9fbfe3df2"`
+    `http://net-music.penkuoer.com/playlist/detail?id=${v.id}`
+  );
+}
+
+export function near(v) {
+  console.log(v)
+  return axios.get(
+    `http://net-music.penkuoer.com/playlist/detail?id=${v.userId}&type=1`
   );
 }
 

@@ -46,10 +46,11 @@ export default {
     this.bus.$on("play", this.play);
     this.bus.$on("pause", this.control);
   },
+
   methods: {
     async play(v) {
-      console.log(v);
-      let res = await getlyric(v.id); // .catch((err) => console.log(err));
+      // console.log(v);
+      let res = await getlyric(v.id); //.catch((err) => console.log(err));
       let obj1 = {};
       if (res.data.lrc.lyric) {
         obj1.lrc = res.data.lrc.lyric;
@@ -102,11 +103,13 @@ export default {
         this.au.pause();
       }
     },
+    nearList(v) {
+      console.log(v);
+    },
   },
   mounted() {
     // this.loadnearSongs();
     document.querySelector("audio").autoplay = true;
-
     this.au = this.$refs.audio.$refs.audio;
   },
 };
