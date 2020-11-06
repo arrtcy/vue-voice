@@ -89,6 +89,7 @@ const routes = [
     meta: { title: "修改" },
     component: () => import("../views/wdy/Update.vue"),
   },
+ 
   {
     path: "/find",
     name: "Find",

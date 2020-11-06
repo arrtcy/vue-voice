@@ -9,6 +9,15 @@ import { Card } from "vant";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
+
+/* ------------------------------------------------- */
+import { Lazyload } from 'vant';
+Vue.use(Lazyload);
+// 注册时可以配置额外的选项
+Vue.use(Lazyload, {
+  lazyComponent: true,
+});
+/* -------------------------------------------------- */
 Vue.use(ElementUI);
 
 Vue.use(Card);
