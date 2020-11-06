@@ -7,7 +7,7 @@
       :style="{ width: '85%', height: '100%' }"
     >
       <div id="top">
-        <van-notice-bar scrollable text="技术是开发它的人的共同灵魂。" />
+        <van-notice-bar scrollable text="Web前端百度招聘，https://talent.baidu.com/external/baidu/campus.html"  color="red" />
         <van-card
           :desc="use.signature"
           :title="use.nickname"
@@ -28,7 +28,7 @@
         <p><van-icon name="music-o" size="24px" />口袋彩铃</p>
       </div>
       <div id="footer">
-        <p>其他服务</p> 
+        <p>其他服务</p>
         <hr />
         <p><van-icon name="aim" size="24px" />个性装扮</p>
         <p @click="off"><van-icon name="clock-o" size="24px" />定时关闭</p>
@@ -37,9 +37,9 @@
         <p><van-icon name="description" size="24px" />我的订单</p>
       </div>
       <div id="set">
-        <span><van-icon name="music-o" size="24px" />夜间模式</span>
-        <span><van-icon name="setting-o" size="24px" />设置</span>
-        <span @click="quit"><van-icon name="close" size="24px" />退出</span>
+       <p><van-icon name="music-o" size="24px" />夜间模式</p> 
+       <p><van-icon name="setting-o" size="24px" />设置</p> 
+       <p @click="quit"> <van-icon name="close" size="24px" />退出</p> 
       </div>
     </van-popup>
   </section>
@@ -55,12 +55,11 @@ export default {
       show: false,
       active: 0,
       Dialog,
-      use:{}
+      use: {},
     };
   },
   methods: {
     showPopup() {
-      
       // const  res=await info()
       // console.log(res)
       this.show = true;
@@ -75,22 +74,21 @@ export default {
         message: "10分钟\n20分钟\n30分钟\n45分钟\n60分钟",
       })
         .then(() => {
-          // on confirm
+          
         })
         .catch(() => {
-          // on cancel
+          
         });
     },
     click1() {
       this.$router.push({ name: "Update" });
     },
-  
   },
   created() {
-     this.bus.$on("showPopup",this.showPopup)
-     this.bus.$on('info',this.info)
-    this.use=JSON.parse(localStorage.getItem("user"))
-     console.log(this.use)
+    this.bus.$on("showPopup", this.showPopup);
+    this.bus.$on("info", this.info);
+    this.use = JSON.parse(localStorage.getItem("user"));
+    console.log(this.use);
   },
 };
 </script>
@@ -104,37 +102,52 @@ export default {
 }
 #nav {
   height: 0.16rem;
-  background-color: goldenrod;
+  background-color: rgb(247, 247, 247);
+}
+#nav p{
+  display: flex;
 }
 #main {
   margin-top: 0.16rem;
   background-color: rgb(247, 247, 247);
 }
+
 #footer {
   margin-top: 0.16rem;
   background-color: rgb(247, 247, 247);
 }
+
 #main p {
+  display: flex;
   margin-top: 0.08rem;
 }
+
 #main p:hover {
   background-color: rgb(230, 230, 230);
 }
+
 #footer p {
   margin-top: 0.08rem;
+  display: flex;
 }
+
 #footer p:hover {
   background-color: rgb(230, 230, 230);
 }
+
+
 #set {
   margin-top: 0.16rem;
-  display: flex;
+  /* display: flex; */
   justify-content: space-around;
-  height: 0.8rem;
-  line-height: 0.8rem;
-  background-color: goldenrod;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  background-color: rgb(247, 247, 247);
 }
-.van-card__title{
+#set p{
+  /* display: flex; */
+}
+.van-card__title {
   font-size: 0.16rem;
 }
 </style>

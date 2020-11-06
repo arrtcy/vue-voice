@@ -75,12 +75,8 @@ export default {
         if (res.status == 200) {
           alert("登录成功");
           localStorage.setItem("uid", res.data.account.id);
-          localStorage.setItem("user",JSON.stringify(res.data.profile))
-      
-          
-          
+          localStorage.setItem("user",JSON.stringify(res.data.profile)) 
           this.$router.push({ name: "Presonal" });
-
         } else {
           alert("请检查用户名");
         }

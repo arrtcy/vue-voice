@@ -24,4 +24,11 @@ export function songs(v) {
   );
 }
 
+export function near(v) {
+  console.log(v)
+  return axios.get(
+    `http://net-music.penkuoer.com/playlist/detail?id=${v.userId}&type=1`
+  );
+}
+
 

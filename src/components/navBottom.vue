@@ -42,6 +42,7 @@ export default {
   },
   created() {
     this.bus.$on("play", this.play);
+    this.bus.$on("near",this.nearList)
   },
   methods: {
     async play(v) {
@@ -80,6 +81,9 @@ export default {
     top() {
       console.log(2222);
     },
+    nearList(v){
+      console.log(v);
+    }
   },
   mounted() {
     // this.loadnearSongs();
