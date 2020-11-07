@@ -46,7 +46,7 @@ export function fans(v) {
 export function concern(v) {
          // console.log(v)
          return axios.get(
-           `http://net-music.penkuoer.com//user/follows?uid=${v.id}`
+           `http://net-music.penkuoer.com/user/follows?uid=${v.id}`
          );
        }
 

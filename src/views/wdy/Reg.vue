@@ -1,8 +1,10 @@
 <template>
   <div class="Reg">
     <div class="content">
-
-      <img src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png" alt="">
+      <img
+        src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png"
+        alt=""
+      />
 
       <van-form @submit="onSubmit">
         <van-field
@@ -38,7 +40,7 @@
           <van-button type="danger" @click="cta">发送验证码</van-button>
         </div>
 
-        <div style="margin: 16px;">
+        <div style="margin: 16px">
           <van-button round block type="info" native-type="submit">
             注册</van-button
           >
@@ -96,7 +98,7 @@ export default {
 .content {
   flex: 1;
   overflow: auto;
-  width: 375px
+  width: 375px;
 }
 .reg-login {
   text-align: center;
@@ -104,7 +106,7 @@ export default {
 .capt {
   position: relative;
 }
-.content img{
+.content img {
   margin-left: 0.25rem;
 }
 </style>

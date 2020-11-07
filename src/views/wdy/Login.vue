@@ -21,7 +21,7 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"
       />
-      <div style="margin: 16px;">
+      <div style="margin: 16px">
         <van-button round block type="info" native-type="submit">
           登录
         </van-button>
@@ -37,7 +37,7 @@
       <div class="login-reg">
         <router-link :to="{ name: 'Reg' }">没有账号，我要注册！</router-link>
       </div>
-      <div class="agreement ">
+      <div class="agreement">
         <input
           type="checkbox"
           @click="hand"
@@ -52,7 +52,7 @@
 
 <script>
 import { LOGIN } from "../../unitls/Login";
-
+import { Notify } from 'vant';
 export default {
   data() {
     return {
@@ -71,9 +71,9 @@ export default {
       let parmas = { phone, password };
       if (this.checked) {
         const res = await LOGIN(parmas);
-        console.log(res.data.profile);
+        // console.log(res.data.profile);
         if (res.status == 200) {
-          alert("登录成功");
+         Notify('登陆成功');
           localStorage.setItem("uid", res.data.account.id);
           localStorage.setItem("user", JSON.stringify(res.data.profile));
           this.$router.push({ name: "Serach" });
@@ -81,7 +81,7 @@ export default {
           alert("请检查用户名");
         }
       } else {
-        alert("请同意协议");
+      alert('请同意协议')
       }
     },
   },

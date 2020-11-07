@@ -95,7 +95,7 @@ export default {
   async created() {
     this.dayList();
     let res = await banner();
-    console.log(res);
+    // console.log(res);
     this.images = res.data.banners;
   },
   methods: {

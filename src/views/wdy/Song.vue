@@ -1,7 +1,7 @@
 <template>
   <section class="song">
     <div id="top">
-      <div class="left"><van-icon name="arrow-left" @click="goback" />歌单</div>
+      <div class="left"  @click="goback"><van-icon name="arrow-left" />歌单</div>
       <div class="right">
         <van-icon name="search" /> <van-icon name="ellipsis" />
       </div>
@@ -14,7 +14,7 @@
       />
     </div>
     <div id="footer">
-      <div><van-icon name="chat-o"  @click="commentClick()"/>评论</div>
+      <div><van-icon name="chat-o" @click="commentClick()" />评论</div>
       <div><van-icon name="share-o" />分享</div>
       <div><van-icon name="down" />下载</div>
       <div><van-icon name="sign" />多选</div>
@@ -45,7 +45,7 @@ export default {
       songList: [],
       obj: {},
       num: 0.1,
-      dataId:''
+      dataId: "",
     };
   },
   methods: {
@@ -64,13 +64,12 @@ export default {
         c.bol = true;
       });
       this.songList = res.data.playlist.tracks;
-     
     },
 
-    click(i,item) {
-      this.dataId=item.id
-     console.log(this.dataId); 
-      
+    click(i, item) {
+      this.dataId = item.id;
+      console.log(this.dataId);
+
       this.songList.forEach((v) => {
         console.log(v.bol);
         v.bol = true;
@@ -89,18 +88,17 @@ export default {
       }
       // console.log(this.num, i);
     },
-    commentClick(){
-     
-        this.$router.push({name:'Comment',query:{id:this.obj.id}})
+    commentClick() {
+      this.$router.push({ name: "Comment", query: { id: this.obj.id } });
       // console.log(this.obj.id)
-    }
+    },
   },
   created() {
     this.bus.$on("info", this.info);
     this.perinfo = JSON.parse(localStorage.getItem("user"));
     // console.log(this.$route.query)
     this.obj = this.$route.query;
-    
+
     this.song(this.obj);
   },
 };
@@ -109,11 +107,10 @@ export default {
 .song {
   padding: 0.1rem;
 }
-.left {
-  float: left;
-}
-.right {
-  float: right;
+#top{
+  display: flex;
+  /* background: red; */
+  justify-content: space-between;
 }
 #nav {
   clear: both;
