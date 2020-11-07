@@ -65,6 +65,12 @@ const routes = [
     name: "commendJe",
     component: () => import("../views/tian/commendJe.vue"),
   },
+
+
+
+
+
+
   {
     path: "/login",
     name: "Login",

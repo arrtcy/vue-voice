@@ -17,15 +17,18 @@
         </li>
 
         <li class="li3">
-          <video
-            poster="http://pic1.win4000.com/mobile/2020-10-26/5f967d14b58f7_250_350.jpg"
-          ></video>
+            
+            <video  
+              
+              poster="http://pic1.win4000.com/mobile/2020-10-26/5f967d14b58f7_250_350.jpg"
+            >
+            </video> 
 
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
 
         <li class="li4">
-          <video
+             <video 
             poster="http://pic1.win4000.com/mobile/2020-10-27/5f97b39cef663_250_350.jpg"
           ></video>
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
@@ -149,7 +152,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .sort {
   position: relative;
 }
@@ -172,8 +175,6 @@ export default {
   border: 0;
   border-radius: 0.05rem;
 }
-</style>
-<style scoped>
 .stacked-cards {
   position: relative;
 }

@@ -60,6 +60,7 @@ export default {
       obj1.src = `https://music.163.com/song/media/outer/url?id=${v.id}.mp3`;
       obj1.title = v.name;
       // console.log(v.ar);
+      //作者
       if (v.ar && v.ar[0].name) {
         obj1.artist = v.ar[0].name;
       } else {
