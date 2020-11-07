@@ -14,13 +14,11 @@
       >
         <van-cell v-for="(item, i) in list" :key="i" >
           <img class="img2" :src="item.picUrl" alt="" /> 
-             
           <span>
            <p class="span1"> {{ item.name }}</p>
            <p class="span2">作者： {{item.song.artists[0].name}}</p>
            </span>
            <van-icon :name="item.bol?'play-circle':'pause-circle'" size="0.3rem" @click="playMusic(item,i)"  color="white"/>
-           <!-- <van-icon name="pause-circle" />play-circle -->
         </van-cell>
       </van-list>
     </van-pull-refresh>
@@ -46,7 +44,9 @@ export default {
   methods: {
     //点击播放
     playMusic(item,i){
-      this.list[i].bol=!this.list[i].bol
+      this.list[i].bol=!this.list[i].bol,
+      console.log(item)
+      
     },
 
    /*  playClick(items) {

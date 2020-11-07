@@ -4,14 +4,13 @@
     <div class="stacked-cards">
       <ul >
         <li class="li1" @click="clickShow($event)"> 
-            <video src="http://vodkgeyttp8.vod.126.net/cloudmusic/dc70/core/ec9c/dd8ec27e4ac4503c820eb498f6b55c1e.mp4?wsSecret=eb534f967c9e0444f6310326cc65d40c&wsTime=1604479151"
-            
+            <video 
             poster="http://pic1.win4000.com/mobile/2020-11-04/5fa2526d5a971_250_350.jpg"
             ></video>
              <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
         <li class="li2" @click="clickShow($event)">
-             <video src="http://vodkgeyttp8.vod.126.net/cloudmusic/58a0/core/f9de/871942284c6e0f5b5c6370421bcb100c.mp4?wsSecret=a457c616fcc15bba968e699af06fb0b1&wsTime=1604479283"
+             <video 
            
             poster="http://pic1.win4000.com/mobile/2020-11-02/5f9fccd22f2b6_250_350.jpg"
             ></video>
@@ -21,7 +20,7 @@
         <li class="li3">
             
             <video  
-              src="http://vodkgeyttp8.vod.126.net/cloudmusic/MGM4MCQkIDAxNDEgJDBgIA==/mv/357109/d8a5c26e4da6759dc2ff5907ba34cd0f.mp4?wsSecret=d3f106915405913c0073f8739f0a6a16&wsTime=1604481396"
+              
               poster="http://pic1.win4000.com/mobile/2020-10-26/5f967d14b58f7_250_350.jpg"
             >
             </video> 
@@ -31,13 +30,13 @@
         </li>
        
         <li class="li4" @click="clickShow($event)">
-             <video src="http://vodkgeyttp8.vod.126.net/cloudmusic/JCBgNDAwNTAwIDBhNyQiIg==/mv/349937/73a92606b6ce283c7672e9a2488798f7.mp4?wsSecret=f8cefec56b2529123994c5a188ee125c&wsTime=1604479634"
+             <video 
             poster="http://pic1.win4000.com/mobile/2020-10-27/5f97b39cef663_250_350.jpg"
             ></video>
              <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
         <li class="li5" @click="clickShow($event)">
-             <video src="http://vodkgeyttp8.vod.126.net/cloudmusic/IWQwMSJhYSAwICAhMiAwYA==/mv/353187/b45dd35b6bd49f0fca55db8779c3602b.mp4?wsSecret=7dac83a344acc74d4cf9abf1c335ebe7&wsTime=1604479765"
+             <video 
             
             poster="http://pic1.win4000.com/mobile/2020-09-27/5f7023c9e0287_250_350.jpg"
             ></video>

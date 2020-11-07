@@ -44,3 +44,10 @@ export  function Mv(v){
     
     }
 
+
+/* 获取mv评论的接口 */
+
+export  function commit(v){
+    return axios.get(`http://net-music.penkuoer.com/comment/mv?id=${v}`);
+    
+    }

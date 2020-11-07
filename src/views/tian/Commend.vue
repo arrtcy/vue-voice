@@ -1,7 +1,28 @@
 
 <template>
   <section>
-    
+    <van-share-sheet
+  v-model="showShare"
+  title="立即分享给好友"
+  :options="options"
+/> 
+
+<van-popup v-model="show" position="bottom" :style="{ height: '60%' }" >
+  <ul>
+    <li class="comment" v-for="c in commentList" :key="c.commentId">
+      <span class="s1">{{c.user.nickname}}</span>
+     <span class="s2">{{c.content}}</span>
+    </li>
+  </ul>
+  
+<div class="b">
+  <span>评论</span>
+  <textarea name="" id="" cols="30" rows="10" placeholder="请发表你的评论"></textarea>
+  <button @click="sent">发送</button>
+</div>
+
+
+</van-popup>   
     <div class="selection">
     
      <div  v-for="(item,i) in list" :key="item.id" class="mv">
@@ -30,14 +51,31 @@
 <script>
 
 
-import{Mv, MvList} from '../../unitls/sort'
+import{Mv, MvList,commit} from '../../unitls/sort'
 export default {
   
     name:"Rock",
   data(){ 
     return{
+      commentList:[],
        list:[],
         videoURL:[],
+        show: false,
+       showShare: false,
+      options: [
+        [
+          { name: '微信', icon: 'wechat' },
+          { name: '微博', icon: 'weibo' },
+          { name: 'QQ', icon: 'qq' },
+        ],
+        [
+          { name: '复制链接', icon: 'link' },
+          { name: '分享海报', icon: 'poster' },
+          { name: '二维码', icon: 'qrcode' },
+        ],
+      ],
+
+
     }
    
 
@@ -78,6 +116,7 @@ this.videoURL.push(res1.data.data.url)
 share(item){
  // console.log(item)
     item.isColor="black"
+     this.showShare=true
 },
 good(item){
  // console.log(item)
@@ -87,10 +126,20 @@ like(item){
  // console.log(item)
     item.likeColor="red"
 },
-chat(item){
-  //console.log(item)
+ async chat(item){
     item.chatColor="green"
+    this.show = true;
+    //console.log(item)
+    let res = await commit(item.id)
+    console.log(res.data.comments)  
+    this.commentList= res.data.comments
 },
+sent(){
+   
+
+
+
+}
 
 },
 
@@ -98,7 +147,7 @@ chat(item){
 }
 </script>
 
-<style>
+<style scoped>
 .section{
   margin: 0;
   padding: 0;
@@ -142,4 +191,50 @@ video{
  justify-content: space-around;
  
 }
+template{
+  position: relative;
+}
+.van-popup{
+position: absolute;
+bottom: 0;
+display: flex;
+flex-direction: column;
+}
+ul{
+  flex: 1;
+  overflow: auto;
+}
+.comment{
+  margin-bottom:20px ;
+  width: 100%;
+  height: 40px;
+  
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(192, 245, 68, 0.8);
+  
+}
+.s1{
+  display: block;
+   background-color: rgb(233, 233, 153)
+  
+}
+.s2{
+  display: block;
+  margin-left:10px;
+}
+
+.b{
+
+height: 100px;
+background-color: rgb(241, 238, 238);
+height: 1rem;
+display: flex;
+ justify-content: space-between;
+}
+button{
+  height: 40px;
+  width: 60px;
+}
+
 </style>

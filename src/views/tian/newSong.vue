@@ -9,7 +9,7 @@
           <p class="span1"> {{item.name}}</p>
           <p class="span2">{{item.artists[0].name}} </p>
           </span>
-           <van-icon :name="item.bol?'play-circle-o':'pause-circle'" size="0.3rem" @click="playMusic(item,i)"  color="white"/>
+           <van-icon :name="item.btn?'play-circle':'pause-circle'" size="0.3rem" @click="playList(item,i)"  color="white"/>
         </li>
      </ul>
   </section>
@@ -35,10 +35,11 @@ this.LoadData()
 
 },
 methods:{
-playMusic(item,i){
+  playList(item,i){
+    console.log(i)
       console.log(item)
-      console.log(this.list[i].bol)
-      this.list[i].bol=!this.list[i].bol
+      console.log(this.list[i].btn)
+      this.list[i].btn=!this.list[i].btn
     },
 
 
@@ -48,7 +49,7 @@ playMusic(item,i){
   console.log(res.data.data)
   this.list = res.data.data
   res.data.data.forEach(v => {
-        v.bol=true;
+        v.btn = true;
       });
 },
 },
