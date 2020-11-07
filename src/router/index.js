@@ -87,8 +87,14 @@ const routes = [
   {
     path: "/followeds",
     name: "Followeds",
-    meta: { title: "修改" },
+    meta: { title: "粉丝" },
     component: () => import("../views/wdy/Followeds.vue"),
+  },
+  {
+    path: "/comment",
+    name: "Comment",
+    meta: { title: "歌曲评论" },
+    component: () => import("../views/wdy/Comment.vue"),
   },
   {
     path: "/find",
