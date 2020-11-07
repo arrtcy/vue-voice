@@ -21,10 +21,13 @@
     </div>
     <div id="main">
       <ul>
-        <li v-for="(item, i) in songList" :key="item._id" @click="click(i)">
+        <li v-for="(item, i) in songList" :key="item._id">
           <span>{{ item.name }}</span>
           <div>
-            <van-icon name="play-circle-o" />
+            <van-icon
+              :name="item.bol ? 'play-circle-o' : 'pause-circle'"
+              @click="click(i, item)"
+            />
           </div>
         </li>
       </ul>
@@ -34,12 +37,14 @@
 
 <script>
 import { songs } from "../../unitls/Login";
+
 export default {
   data() {
     return {
       perinfo: {},
       songList: [],
       obj: {},
+      num: 0.1,
     };
   },
   methods: {
@@ -53,10 +58,32 @@ export default {
     async song(v) {
       const res = await songs(v);
       // console.log(res.data.playlist.tracks)
+      res.data.playlist.tracks.forEach((c) => {
+        // console.log(c);
+        c.bol = true;
+      });
       this.songList = res.data.playlist.tracks;
+     
     },
-    click(i) {
-      this.bus.$emit("play", this.songList[i]);
+
+    click(i,item) {
+      this.songList.forEach((v) => {
+        console.log(v.bol);
+        v.bol = true;
+      });
+      this.songList[i].bol = !this.songList[i].bol;
+      if (this.num == i) {
+        this.bus.$emit("pause");
+        item.bol = true;
+      } else {
+        this.num = i;
+        if (item.bol == false) {
+          this.bus.$emit("play", this.songList[i]);
+        } else {
+          this.bus.$emit("pause");
+        }
+      }
+      // console.log(this.num, i);
     },
   },
   created() {

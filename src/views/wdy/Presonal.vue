@@ -8,12 +8,24 @@
     >
       <div id="top">
         <van-notice-bar scrollable text="Web前端百度招聘，https://talent.baidu.com/external/baidu/campus.html"  color="red" />
-        <van-card
+
+         <van-card v-show="isShows"
+         thumb="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604677154651&di=93111c8f71cae33eb1cd664a1cf86ee6&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fb21bb051f81986184dd851494ced2e738ad4e664.jpg"
+        >
+       <template #footer>
+          <van-button id="btn" @click="loginClick">立即登录>>></van-button>
+      </template>
+    </van-card>
+
+
+       <van-card
+          v-show='ok'
           :desc="use.signature"
           :title="use.nickname"
           :thumb="use.avatarUrl"
           @click="click1"
         />
+
       </div>
       <div id="nav">
         <p><van-icon name="bulb-o" size="24px" />创作者中心</p>
@@ -47,8 +59,7 @@
 
 <script>
 import { Dialog } from "vant";
-// import { config } from 'vue/types/umd';
-// import {info} from '../../unitls/Login'
+
 export default {
   data() {
     return {
@@ -56,6 +67,8 @@ export default {
       active: 0,
       Dialog,
       use: {},
+      isShows:false,
+      ok:false
     };
   },
   methods: {
@@ -83,12 +96,23 @@ export default {
     click1() {
       this.$router.push({ name: "Update" });
     },
+    loginClick(){
+      this.$router.push({name:'Login'})
+    }
   },
   created() {
-    this.bus.$on("showPopup", this.showPopup);
-    this.bus.$on("info", this.info);
-    this.use = JSON.parse(localStorage.getItem("user"));
-    console.log(this.use);
+
+     
+       this.bus.$on("showPopup", this.showPopup);
+       this.bus.$on("info", this.info);
+    if(localStorage.getItem("user")){
+       this.use = JSON.parse(localStorage.getItem("user"));
+       this.ok=true
+        // console.log(this.use);
+    }else{
+        this.isShows=true
+        
+    }
   },
 };
 </script>
@@ -149,5 +173,14 @@ export default {
 }
 .van-card__title {
   font-size: 0.16rem;
+}
+
+#btn{
+  width: 200px;
+  height: 34px;
+  background-color: rgb(240, 240, 240);
+  position: absolute;
+  top:0.4rem;
+  left: 1.3rem;
 }
 </style>

@@ -1,8 +1,6 @@
 <template>
   <section class="myself">
     <van-card v-show="isShow"
-    
-
          thumb="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604677154651&di=93111c8f71cae33eb1cd664a1cf86ee6&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fb21bb051f81986184dd851494ced2e738ad4e664.jpg"
         >
        <template #footer>
@@ -63,10 +61,10 @@
         </h3>
         <div id="main">
           <ul>
-            <li v-for="(v, i) in nearList" :key="v.id" @click="click1(i)">
+            <li v-for="(v, i) in nearList" :key="v.id" @click="click1(v,i)">
               <span> {{ v.name }}</span>
               <div>
-                <van-icon name="play-circle" />
+                <van-icon :name="v.bol?'play-circle-o':'pause-circle'" />
               </div>
             </li>
           </ul>
@@ -78,6 +76,7 @@
 
 <script scoped>
 import { info, near } from "../../unitls/Login";
+
 
 export default {
   data() {
@@ -92,7 +91,6 @@ export default {
     };
   },
   methods: {
-
     click(item) {
       this.$router.push({
         name: "Song",
@@ -104,19 +102,31 @@ export default {
         },
       });
     },
-    loginClick(){
-      
+    loginClick(){ 
       this.$router.push({name:"Login"})
     },
-
-    click1(i) {
-      this.bus.$emit("play", this.nearList[i]);
+    click1(v,i) {
+       this.nearList.forEach((v) => {
+        console.log(v.bol);
+        v.bol = true;
+      });
+      
+      this.nearList[i].bol = !this.nearList[i].bol;
+      if (this.num == i){
+        this.bus.$emit("pause");
+        v.bol = true;
+      } else {
+        this.num = i;
+        if (v.bol == false) {
+          this.bus.$emit("play", this.songList[i]);
+        } else {
+          this.bus.$emit("pause");
+        }
+      }
     },
-
   },
   async created(){
       if(localStorage.getItem("user")){
-
             this.use = JSON.parse(localStorage.getItem("user"));
             // console.log(this.use);
             const res = await info(this.use);
@@ -127,16 +137,16 @@ export default {
             // console.log(this.playList)
             const res1 = await near(this.use);
             // console.log(res1.data.playlist.tracks);
+
+            res1.data.playlist.tracks.forEach((v)=>{
+              v.bol=true
+            })
             this.nearList = res1.data.playlist.tracks;
             this.bus.$emit("near", this.nearList);
             this.ok=true
-
       }else{
-
             this.isShow=true
-
       }
-    
   },
 };
 </script>
