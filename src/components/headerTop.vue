@@ -38,10 +38,8 @@ export default {
       console.log(v);
     },
     showpop() {
-      this.$nextTick(()=>{
-        this.bus.$emit("showPopup");
-      })
-      
+      // console.log(2323);
+      this.bus.$emit("showPopup");
     },
   },
 };

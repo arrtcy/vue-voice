@@ -1,5 +1,45 @@
 <template>
   <section class="sort">
+    <!-- 插件 -->
+    <div class="stacked-cards">
+      <ul>
+        <li class="li1">
+          <video
+            poster="http://pic1.win4000.com/mobile/2020-11-04/5fa2526d5a971_250_350.jpg"
+          ></video>
+          <van-icon color="#ddd" name="play-circle" size="0.6rem" />
+        </li>
+        <li class="li2">
+          <video
+            poster="http://pic1.win4000.com/mobile/2020-11-02/5f9fccd22f2b6_250_350.jpg"
+          ></video>
+          <van-icon color="#ddd" name="play-circle" size="0.6rem" />
+        </li>
+
+        <li class="li3">
+          <video
+            poster="http://pic1.win4000.com/mobile/2020-10-26/5f967d14b58f7_250_350.jpg"
+          ></video>
+
+          <van-icon color="#ddd" name="play-circle" size="0.6rem" />
+        </li>
+
+        <li class="li4">
+          <video
+            poster="http://pic1.win4000.com/mobile/2020-10-27/5f97b39cef663_250_350.jpg"
+          ></video>
+          <van-icon color="#ddd" name="play-circle" size="0.6rem" />
+        </li>
+        <li class="li5">
+          <video
+            poster="http://pic1.win4000.com/mobile/2020-09-27/5f7023c9e0287_250_350.jpg"
+          ></video>
+          <van-icon color="#ddd" name="play-circle" size="0.6rem" />
+        </li>
+      </ul>
+    </div>
+    <!-- ------ -->
+
     <ul class="ul">
       <li
         @click="newDie"
@@ -41,7 +81,7 @@
         @click="Commend"
         style="background:url('http://p1.music.126.net/OXHVPwI1IKAUA9dSu3Xq8A==/109951165412411765.jpg?param=140y140') center/cover no-repeat"
       >
-        推荐歌单
+        Mv
       </li>
       <li
         @click="commendSong"
@@ -56,13 +96,17 @@
         推荐节目
       </li>
     </ul>
+
+    <div class="kong"></div>
   </section>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isShow: false,
+    };
   },
   methods: {
     newDie() {
@@ -94,12 +138,24 @@ export default {
       this.$router.push({ name: "commendJe" });
     },
   },
+  created() {},
+  mounted() {
+    var stackedCard = new window.stackedCards({
+      selector: ".stacked-cards",
+      layout: "slide",
+      transformOrigin: "center",
+    });
+
+    stackedCard.init();
+  },
 };
 </script>
 
 <style>
+.sort {
+  position: relative;
+}
 .ul {
-  margin-top: 30px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -117,5 +173,134 @@ export default {
   height: 1.3rem;
   border: 0;
   border-radius: 0.05rem;
+}
+</style>
+<style scoped>
+.stacked-cards {
+  position: relative;
+}
+.stacked-cards ul {
+  position: relative;
+  max-width: 60%;
+  margin: 0 auto;
+  padding-left: 0;
+}
+
+.stacked-cards li {
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px 0px #333;
+  list-style: none;
+  width: 65%;
+  position: absolute;
+  left: 50%;
+  transition: 0.5s ease transform;
+}
+
+.stacked-cards li:after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.stacked-cards li.active:after {
+  display: none;
+}
+.stacked-cards li img {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  z-index: 4;
+}
+.stacked-cards li.active {
+  cursor: default;
+  box-shadow: 0 5px 10px 0px #333;
+  transition: 0.5s ease transform;
+}
+
+.stacked-cards {
+  padding-top: 40px;
+  padding-bottom: 15px;
+}
+
+.stacked-cards-fanOut {
+  padding-bottom: 40px;
+}
+
+.stacked-cards-fanOut li img {
+  max-height: 200px;
+}
+
+.stacked-cards li {
+  height: 250px;
+}
+
+@media (max-width: 767px) {
+  .stacked-cards li {
+    height: 180px;
+  }
+}
+
+/* .stacked-cards li {
+  background-color: #00bcd4;
+}
+
+.stacked-cards li:nth-child(n) {
+  background-color: #3599db;
+}
+
+.stacked-cards li:nth-child(2n) {
+  background-color: #e61b77;
+}
+
+.stacked-cards li:nth-child(3n) {
+  background-color: #00bcd4;
+}
+
+.stacked-cards li:nth-child(4n) {
+  background-color: #f4b251;
+}
+
+.stacked-cards li:nth-child(5n) {
+  background-color: #8e4497;
+} */
+video {
+  filter: brightness(150%);
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 8px;
+}
+.van-icon {
+  display: block;
+  filter: brightness(300%);
+  position: absolute;
+  top: 30%;
+  margin: auto;
+  left: 30%;
+  opacity: 0.7;
+}
+.li3,
+.li1,
+.li2,
+.li4,
+.li5 {
+  position: relative;
+}
+.video {
+  position: absolute;
+  width: 100%;
+  height: 230px;
+  top: 10px;
+  background-color: pink;
+  z-index: 99999999;
+}
+.kong {
+  height: 1rem;
+  width: 100%;
 }
 </style>
