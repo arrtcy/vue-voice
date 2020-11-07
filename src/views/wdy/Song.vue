@@ -14,7 +14,7 @@
       />
     </div>
     <div id="footer">
-      <div><van-icon name="chat-o" />评论</div>
+      <div><van-icon name="chat-o"  @click="commentClick()"/>评论</div>
       <div><van-icon name="share-o" />分享</div>
       <div><van-icon name="down" />下载</div>
       <div><van-icon name="sign" />多选</div>
@@ -45,6 +45,7 @@ export default {
       songList: [],
       obj: {},
       num: 0.1,
+      dataId:''
     };
   },
   methods: {
@@ -67,6 +68,9 @@ export default {
     },
 
     click(i,item) {
+      this.dataId=item.id
+     console.log(this.dataId); 
+      
       this.songList.forEach((v) => {
         console.log(v.bol);
         v.bol = true;
@@ -85,13 +89,18 @@ export default {
       }
       // console.log(this.num, i);
     },
+    commentClick(){
+     
+        this.$router.push({name:'Comment',query:{id:this.obj.id}})
+      // console.log(this.obj.id)
+    }
   },
   created() {
     this.bus.$on("info", this.info);
     this.perinfo = JSON.parse(localStorage.getItem("user"));
-    console.log(this.$route.query)
+    // console.log(this.$route.query)
     this.obj = this.$route.query;
-    // console.log(this.obj)
+    
     this.song(this.obj);
   },
 };

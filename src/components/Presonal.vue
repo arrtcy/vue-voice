@@ -61,6 +61,7 @@ export default {
     // this.bus.$on("info", this.info);
     this.use = JSON.parse(localStorage.getItem("user"));
     console.log(this.use);
+
   },
   methods: {
     showPopup() {
