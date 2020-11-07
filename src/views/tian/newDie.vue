@@ -1,8 +1,10 @@
 <template>
   <section>
-    <img src="http://p4.music.126.net/ed9Wlc8HvHd2cvI1FtLg9A==/109951165431104320.jpg?param=200y200" alt="" class="img1">
-
-
+    <img
+      src="http://p4.music.126.net/ed9Wlc8HvHd2cvI1FtLg9A==/109951165431104320.jpg?param=200y200"
+      alt=""
+      class="img1"
+    />
 
     <!-- 加载更多 -->
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
@@ -12,13 +14,18 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <van-cell v-for="(item, i) in list" :key="i" >
-          <img class="img2" :src="item.picUrl" alt="" /> 
+        <van-cell v-for="(item, i) in list" :key="i">
+          <img class="img2" :src="item.picUrl" alt="" />
           <span>
-           <p class="span1"> {{ item.name }}</p>
-           <p class="span2">作者： {{item.song.artists[0].name}}</p>
-           </span>
-           <van-icon :name="item.bol?'play-circle':'pause-circle'" size="0.3rem" @click="playMusic(item,i)"  color="white"/>
+            <p class="span1">{{ item.name }}</p>
+            <p class="span2">作者： {{ item.song.artists[0].name }}</p>
+          </span>
+          <van-icon
+            :name="item.bol ? 'play-circle' : 'pause-circle'"
+            size="0.3rem"
+            @click="playMusic(item, item.bol, i)"
+            color="white"
+          />
         </van-cell>
       </van-list>
     </van-pull-refresh>
@@ -38,40 +45,37 @@ export default {
       loading: false,
       finished: false,
       refreshing: false,
-      num:0.5,
+      num: 0.5,
     };
   },
   created() {},
   methods: {
     //点击播放
-   
-   async playMusic(item,i){
-      console.log(item.song.artists[0].name)
-     let a=item.song.artists[0].name
-    // console.log({id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.picUrl}});
-     let obj={id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.picUrl}}
-     
-     //this.bus.$emit('play',obj)
-     
 
+    playMusic(item, bol, i) {
+      console.log(this.list, i);
 
-      this.list[i].btn=!this.list[i].btn
-      if(this.num == i){
-          this.bus.$emit('pause')
-           item.bol = true;
-      }else{
+      this.list.forEach((v) => {
+        v.bol = true;
+      });
 
+      this.list[i].bol = !bol;
+      console.log(this.list, i);
+
+      if (this.num == i) {
+        this.bus.$emit("pause");
+      } else {
+        let a = item.song.artists[0].name;
+        let obj = {
+          id: item.id,
+          name: item.name,
+          ar: [{ name: a }],
+          al: { picUrl: item.picUrl },
+        };
         this.num = i;
-        if (item.bol == false) {
-          this.bus.$emit("play", obj);
-        } else {
-          this.bus.$emit("pause");
-        }
-
+        this.bus.$emit("play", obj);
       }
-
     },
-
 
     /* 加载更多 */
     async onLoad() {
@@ -80,17 +84,15 @@ export default {
       let res = await newDie(this.page);
       this.page++;
       //console.log(res.data.result);
-      res.data.result.forEach(v => {
-        v.bol=true
 
+      res.data.result.forEach((v) => {
+        v.bol = true;
       });
-      
-      // console.log(this.list, res.data.albums);
-      // if(this.page>=21){
+
       this.loading = false;
-      // }
 
       this.list = [...this.list, ...res.data.result];
+      console.log(this.list);
     },
     onRefresh() {
       // 清空列表数据
@@ -116,23 +118,23 @@ export default {
   align-items: center;
   justify-content: space-around;
   width: 90%;
-  margin:0 auto;
+  margin: 0 auto;
   margin-top: 0.2rem;
   height: 1.3rem;
   border: 0.01rem solid black;
   border-radius: 5px;
-  background: url('/img/beg4.jpg') center/cover no-repeat;
-  background-color:rgba(250, 244, 244, 0.966);
+  background: url("/img/beg4.jpg") center/cover no-repeat;
+  background-color: rgba(250, 244, 244, 0.966);
 }
 .img2 {
-  display:block;
+  display: block;
   width: 1rem;
   height: 1rem;
 }
 .span1 {
- color: white;
+  color: white;
   width: 1.1rem;
-  height:0.3rem;
+  height: 0.3rem;
   font-size: 0.25rem;
   font-weight: 600;
   overflow: hidden;
@@ -144,21 +146,20 @@ export default {
 .span2 {
   color: white;
   width: 1.1rem;
-  height:0.25rem;
+  height: 0.25rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
-
 }
-.img1{
+.img1 {
   display: block;
-  margin:0 auto;
-  width:94%;
-  height:2rem;
+  margin: 0 auto;
+  width: 94%;
+  height: 2rem;
   border-radius: 8px;
 }
-van-icon{
+van-icon {
   margin-left: 0.3rem;
 }
 </style>

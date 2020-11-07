@@ -1,7 +1,7 @@
 <template>
   <section class="song">
     <div id="top">
-      <div class="left"  @click="goback"><van-icon name="arrow-left" />歌单</div>
+      <div class="left" @click="goback"><van-icon name="arrow-left" />歌单</div>
       <div class="right">
         <van-icon name="search" /> <van-icon name="ellipsis" />
       </div>
@@ -26,7 +26,7 @@
           <div>
             <van-icon
               :name="item.bol ? 'play-circle-o' : 'pause-circle'"
-              @click="click(i, item)"
+              @click="click(i, item.bol, item)"
             />
           </div>
         </li>
@@ -66,7 +66,7 @@ export default {
       this.songList = res.data.playlist.tracks;
     },
 
-    click(i, item) {
+    click(i, bol, item) {
       this.dataId = item.id;
       // console.log(this.dataId);
 
@@ -74,7 +74,8 @@ export default {
         // console.log(v.bol);
         v.bol = true;
       });
-      this.songList[i].bol = !this.songList[i].bol;
+
+      this.songList[i].bol = !bol;
       if (this.num == i) {
         this.bus.$emit("pause");
         item.bol = true;
@@ -107,7 +108,7 @@ export default {
 .song {
   padding: 0.1rem;
 }
-#top{
+#top {
   display: flex;
   /* background: red; */
   justify-content: space-between;
