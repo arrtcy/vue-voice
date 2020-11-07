@@ -17,7 +17,7 @@
       }"
     >
     </aplayer>
-    <div class="top" @click="top"></div>
+    <div class="top" @click.exact="top"></div>
   </div>
 </template>
 

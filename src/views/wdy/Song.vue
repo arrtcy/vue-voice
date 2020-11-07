@@ -1,7 +1,7 @@
 <template>
   <section class="song">
     <div id="top">
-      <div class="left"><van-icon name="arrow-left" @click="goback" />歌单</div>
+      <div class="left"  @click="goback"><van-icon name="arrow-left" />歌单</div>
       <div class="right">
         <van-icon name="search" /> <van-icon name="ellipsis" />
       </div>
@@ -107,11 +107,10 @@ export default {
 .song {
   padding: 0.1rem;
 }
-.left {
-  float: left;
-}
-.right {
-  float: right;
+#top{
+  display: flex;
+  /* background: red; */
+  justify-content: space-between;
 }
 #nav {
   clear: both;

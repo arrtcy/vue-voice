@@ -60,7 +60,7 @@ export default {
     // this.bus.$on("info", this.info);
     if (localStorage.getItem("user")) {
       this.use = JSON.parse(localStorage.getItem("user"));
-      console.log(this.use);
+      // console.log(this.use);
     }
   },
   methods: {
