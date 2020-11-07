@@ -100,10 +100,12 @@ export default {
   border: 0.01rem solid black;
    border-radius: 5px;
 }
-img {
+.img1{
   display: block;
-  width: 1rem;
-  height: 1.2rem;
+  margin:0 auto;
+  width:94%;
+  height:2rem;
+  border-radius: 8px;
 }
 span {
   display: block;

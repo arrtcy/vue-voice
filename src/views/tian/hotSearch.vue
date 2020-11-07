@@ -1,102 +1,125 @@
+
 <template>
   <section>
-    <!-- 加载更多 -->
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-      <van-list
-        v-model="loading"
-        :finished="finished"
-        finished-text="没有更多了"
-        @load="onLoad"
-      >
-        <van-cell v-for="(item, i) in list" :key="i" @click="playClick(item)">
-          <div>
-            <span> {{ item.name }}</span>
-            <!-- <span>{{item.subType}}</span> -->
-            <img :src="item.picUrl" alt="" />
-          </div>
-        </van-cell>
-      </van-list>
-    </van-pull-refresh>
+    <img class="img1" src="http://p2.music.126.net/fWQ5EX9BDCvuaKqtZoYs3A==/109951165425855499.jpg?param=140y140" alt="">
+     <ul>
+       <li  class="new" v-for="(item,i) in list" :key="item.id">
+         <img :src="item.album.picUrl" alt="" class="img2">
+           <span>
+          <p class="span1"> {{item.name}}</p>
+          <p class="span2">{{item.artists[0].name}} </p>
+          </span>
+           <van-icon :name="item.btn?'play-circle':'pause-circle'" size="0.3rem" @click="playList(item,i)"  color="white"/>
+        </li>
+     </ul>
   </section>
 </template>
 
 <script>
-import { hotSearch } from "../../unitls/sort";
+
+
+import{ hotSearch} from '../../unitls/sort'
 export default {
-  name: "hotSearch",
-  data() {
-    return {
-      list: [],
-      page: 0,
-      loading: false,
-      finished: false,
-      refreshing: false,
-    };
+  
+    name:"Chinese",
+    data(){ 
+    return{
+       list:[]
+    }
+   
+
   },
-  created() {},
-  methods: {
-    //点击播放
-    playClick(items) {
-      console.log(items);
+ created(){
+ 
+this.LoadData()
+
+},
+methods:{
+  playList(item,i){
+      this.list[i].btn=!this.list[i].btn
+     /*  console.log(item)
+      console.log(item.id)
+      console.log(item.name)
+      console.log(item.artists[0].name)
+      console.log(item.album.picUrl) */
+    let a = item.artists[0].name
+    console.log({id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.album.picUrl}});
+    let obj = {id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.album.picUrl}}
+     this.bus.$emit('play',obj)
     },
 
-    //tcy添加   下面的加载更多都是重复的没必要。而且这些不是歌，不能放，只是一个类，需要找到里面的歌曲 然后发送play事件，才能播放。
 
-    /* 加载更多 */
-    async onLoad() {
-      //console.log(this.page);
-      this.loading = true;
-      let res = await hotSearch(this.page);
-      this.page++;
-      console.log(res.data.result);
-      // console.log(this.list, res.data.albums);
-      // if(this.page>=21){
-      this.loading = false;
-      // }
-      this.list = [...this.list, ...res.data.result];
-    },
-    onRefresh() {
-      // 清空列表数据
-      this.finished = false;
+ async LoadData(){
+  let res= await hotSearch()
+  //console.log(res)
+ // console.log(res.data.data)
 
-      // 重新加载数据
-      // 将 loading 设置为 true，表示处于加载状态
-      //this.loading = true;
-      this.onLoad();
-    },
-  },
-};
+  res.data.data.forEach(v => {
+        v.btn = true;
+      });
+    this.list = res.data.data 
+},
+},
+
+}
 </script>
 
 <style>
-.van-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-}
-.van-cell {
-  margin-top: 0.1rem;
+
+ul{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+.new{
+ display: flex;
   align-items: center;
-  width: 1.1rem;
-  height: 1.5rem;
+  justify-content: space-around;
+  width: 90%;
+  margin:0 auto;
+  margin-top: 0.2rem;
+  height: 1.3rem;
   border: 0.01rem solid black;
   border-radius: 5px;
+  background: url('/img/beg4.jpg') center/cover no-repeat;
+  background-color:rgba(250, 244, 244, 0.966);
 }
-img {
-  display: block;
+.img2{
+   display:block;
   width: 1rem;
-  height: 1.2rem;
+  height: 1rem;
 }
-span {
-  display: block;
-  width: 1.1rem;
+.span1 {
+ color: white;
+  width: 1.5rem;
+  height:0.3rem;
+  font-size: 0.25rem;
+  font-weight: 600;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
+  margin-bottom: 0.1rem;
+}
+.span2 {
+  color: white;
+  width: 1.1rem;
+  height:0.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  }
+  van-icon{
+  margin-left: 0.3rem;
+}
+
+.img1{
+  display: block;
+  margin:0 auto;
+  width:94%;
+  height:2rem;
+  border-radius: 8px;
 }
 </style>
