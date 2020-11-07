@@ -30,7 +30,7 @@ methods:{
 
 async LoadData(){
   let res= await Official()
-   console.log(res.data.albums)
+  //  console.log(res.data.albums)
    let arr = res.data.albums
    let s= arr.sort(
       function(){

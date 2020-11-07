@@ -50,7 +50,7 @@ export default {
       this.loading = true
       let res = await hotSearch(this.page);
       this.page++;
-      console.log(res.data.result);
+      // console.log(res.data.result);
      // console.log(this.list, res.data.albums);
 // if(this.page>=21){
          this.loading = false

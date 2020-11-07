@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     showPopup() {
-      console.log(123);
+      // console.log(123);
       this.show = true;
     },
     proup() {

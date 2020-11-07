@@ -54,7 +54,7 @@ export default {
     },
     info(v) {
       this.perinfo = v;
-      console.log(this.perinfo.nickname);
+      // console.log(this.perinfo.nickname);
     },
     async song(v) {
       const res = await songs(v);
@@ -68,10 +68,10 @@ export default {
 
     click(i, item) {
       this.dataId = item.id;
-      console.log(this.dataId);
+      // console.log(this.dataId);
 
       this.songList.forEach((v) => {
-        console.log(v.bol);
+        // console.log(v.bol);
         v.bol = true;
       });
       this.songList[i].bol = !this.songList[i].bol;

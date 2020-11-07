@@ -34,9 +34,6 @@ export default {
     };
   },
   methods: {
-    onChange(v) {
-      console.log(v);
-    },
     showpop() {
       // console.log(2323);
       this.bus.$emit("showPopup");

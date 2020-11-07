@@ -46,7 +46,7 @@ export default {
     },
    async  loadData(){
         let res = await hotSearch();
-         console.log(res.data.result);
+        //  console.log(res.data.result);
          let arr = res.data.result
         let s= arr.sort(
        function(){
@@ -65,7 +65,7 @@ export default {
       this.loading = true
       let res = await hotSearch(this.page);
       this.page++;
-      console.log(res.data.result);
+      // console.log(res.data.result);
      // console.log(this.list, res.data.albums);
 // if(this.page>=21){
          this.loading = false

@@ -78,7 +78,7 @@ export async function gteHotRadio() {
 // 获取榜单
 export async function getTopList() {
   let result = await axios.get(`http://net-music.penkuoer.com/toplist/detail`);
-  console.log(1);
+  // console.log(1);
   return result.data;
 }
 // 注册

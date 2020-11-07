@@ -131,7 +131,7 @@ like(item){
     this.show = true;
     //console.log(item)
     let res = await commit(item.id)
-    console.log(res.data.comments)  
+    // console.log(res.data.comments)  
     this.commentList= res.data.comments
 },
 sent(){

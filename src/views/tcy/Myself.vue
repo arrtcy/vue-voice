@@ -105,7 +105,7 @@ export default {
 
     click1(v, i) {
       this.nearList.forEach((v) => {
-        console.log(v.bol);
+        // console.log(v.bol);
         v.bol = true;
       });
 

@@ -63,12 +63,12 @@ export default {
   methods: {
     // 获取监听事件分发的歌曲信息
     async play(obj) {
-      console.log(568978);
+      // console.log(568978);
       let SongWordsResult = await getSongWords(obj.id);
       // console.log(SongWordsResult);
 
       this.songWords = SongWordsResult.replaceAll(/\[(.+?)\]/g, "</p><p>");
-      console.log(this.songWords);
+      // console.log(this.songWords);
       let commentResult = await getSongComment(obj.id);
       this.comments = commentResult;
       this.name = obj.name;

@@ -23,7 +23,7 @@ instance.interceptors.response.use(
   //     return response;
   //   },
   function(error) {
-    console.log(2222);
+    // console.log(2222);
     //   // Any status codes that falls outside the range of 2xx cause this function to trigger
     //   // Do something with response error
     console.dir(error.response);

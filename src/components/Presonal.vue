@@ -67,7 +67,6 @@ export default {
     showPopup() {
       // const  res=await info()
       // console.log(res)
-      console.log(2323);
       this.show = true;
     },
     quit() {
