@@ -14,13 +14,11 @@
       >
         <van-cell v-for="(item, i) in list" :key="i" >
           <img class="img2" :src="item.picUrl" alt="" /> 
-             
           <span>
            <p class="span1"> {{ item.name }}</p>
            <p class="span2">作者： {{item.song.artists[0].name}}</p>
            </span>
            <van-icon :name="item.bol?'play-circle':'pause-circle'" size="0.3rem" @click="playMusic(item,i)"  color="white"/>
-           <!-- <van-icon name="pause-circle" />play-circle -->
         </van-cell>
       </van-list>
     </van-pull-refresh>
@@ -45,8 +43,22 @@ export default {
   created() {},
   methods: {
     //点击播放
-    playMusic(item,i){
-      this.list[i].bol=!this.list[i].bol
+   async playMusic(item,i){
+      this.list[i].bol=!this.list[i].bol,
+      // console.log(item)
+      // console.log(item.id)
+      // console.log(item.name)
+      // console.log(item.picUrl)
+      console.log(item.song.artists[0].name)
+      //{id,name,ar[0].name,al{picUrl}}
+    //  this.obj.name = item.name;
+    //  this.obj.id=item.id;
+    //  this.obj.ar[0].name = item.song.artists[0].name;
+     let a=item.song.artists[0].name
+    //  this.obj.al.picUrl = item.picUrl;
+    // console.log({id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.picUrl}});
+     let obj={id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.picUrl}}
+     this.bus.$emit('play',obj)
     },
 
    /*  playClick(items) {
@@ -66,7 +78,7 @@ export default {
       this.loading = true;
       let res = await newDie(this.page);
       this.page++;
-      console.log(res.data.result);
+      //console.log(res.data.result);
       res.data.result.forEach(v => {
         v.bol=true
 
@@ -108,7 +120,7 @@ export default {
   height: 1.3rem;
   border: 0.01rem solid black;
   border-radius: 5px;
-  background: url('/public/img/beg.jpg') center/cover no-repeat;
+  background: url('/img/beg4.jpg') center/cover no-repeat;
   background-color:rgba(250, 244, 244, 0.966);
 }
 .img2 {
@@ -139,10 +151,12 @@ export default {
 
 }
 .img1{
-  width:100%;
-  height: 2rem;
+  display: block;
+  margin:0 auto;
+  width:94%;
+  height:2rem;
+  border-radius: 8px;
 }
-
 van-icon{
   margin-left: 0.3rem;
 }

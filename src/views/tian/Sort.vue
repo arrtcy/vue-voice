@@ -17,15 +17,18 @@
         </li>
 
         <li class="li3">
-          <video
-            poster="http://pic1.win4000.com/mobile/2020-10-26/5f967d14b58f7_250_350.jpg"
-          ></video>
+            
+            <video  
+              
+              poster="http://pic1.win4000.com/mobile/2020-10-26/5f967d14b58f7_250_350.jpg"
+            >
+            </video> 
 
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
 
         <li class="li4">
-          <video
+             <video 
             poster="http://pic1.win4000.com/mobile/2020-10-27/5f97b39cef663_250_350.jpg"
           ></video>
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
@@ -96,8 +99,6 @@
         推荐节目
       </li>
     </ul>
-
-    <div class="kong"></div>
   </section>
 </template>
 
@@ -151,7 +152,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .sort {
   position: relative;
 }
@@ -160,7 +161,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
 }
 .ul li {
   padding: 0;
@@ -174,8 +175,6 @@ export default {
   border: 0;
   border-radius: 0.05rem;
 }
-</style>
-<style scoped>
 .stacked-cards {
   position: relative;
 }

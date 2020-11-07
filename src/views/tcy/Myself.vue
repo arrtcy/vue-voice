@@ -16,11 +16,13 @@
     />
 
     <van-grid>
-      <van-grid-item icon="location" text="本地音乐" @click="bd" />
-      <van-grid-item icon="audio" text="音乐"  @click="yy"/>
+      <van-grid-item icon="location" text="本地音乐" />
+      <van-grid-item icon="audio" text="音乐" />
+      
       <van-grid-item icon="friends" text="我的好友"  @click="myfans"/>
-      <van-grid-item icon="live" text="视频" />
+      <van-grid-item icon="live" text="视频"  @click="mv"/>
     </van-grid>
+    
     
 
     <van-tabs v-model="activeName">
@@ -86,6 +88,9 @@ export default {
     };
   },
   methods: {
+    mv(){
+      this.$router.push({name:'Commend'})
+    },
    loginClick(){ 
       this.$router.push({name:"Login"})
     },

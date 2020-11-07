@@ -9,7 +9,7 @@
           <p class="span1"> {{item.name}}</p>
           <p class="span2">{{item.artists[0].name}} </p>
           </span>
-           <van-icon :name="item.bol?'play-circle-o':'pause-circle'" size="0.3rem" @click="playMusic(item,i)"  color="white"/>
+           <van-icon :name="item.btn?'play-circle':'pause-circle'" size="0.3rem" @click="playList(item,i)"  color="white"/>
         </li>
      </ul>
   </section>
@@ -35,21 +35,29 @@ this.LoadData()
 
 },
 methods:{
-playMusic(item,i){
-      console.log(item)
-      console.log(this.list[i].bol)
-      this.list[i].bol=!this.list[i].bol
+  playList(item,i){
+      this.list[i].btn=!this.list[i].btn
+     /*  console.log(item)
+      console.log(item.id)
+      console.log(item.name)
+      console.log(item.artists[0].name)
+      console.log(item.album.picUrl) */
+    let a = item.artists[0].name
+    console.log({id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.album.picUrl}});
+    let obj = {id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.album.picUrl}}
+     this.bus.$emit('play',obj)
     },
 
 
  async LoadData(){
   let res= await newSong()
   //console.log(res)
-  console.log(res.data.data)
-  this.list = res.data.data
+  //console.log(res.data.data)
+
   res.data.data.forEach(v => {
-        v.bol=true;
+        v.btn = true;
       });
+    this.list = res.data.data 
 },
 },
 
@@ -74,7 +82,7 @@ ul{
   height: 1.3rem;
   border: 0.01rem solid black;
   border-radius: 5px;
-  background: url('/img/beg.jpg') center/cover no-repeat;
+  background: url('/img/beg4.jpg') center/cover no-repeat;
   background-color:rgba(250, 244, 244, 0.966);
 }
 .img2{
@@ -108,7 +116,10 @@ ul{
 }
 
 .img1{
-  width:100%;
-  height: 2rem;
+  display: block;
+  margin:0 auto;
+  width:94%;
+  height:2rem;
+  border-radius: 8px;
 }
 </style>
