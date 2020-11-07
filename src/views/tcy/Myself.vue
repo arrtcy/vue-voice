@@ -1,8 +1,6 @@
 <template>
   <section class="myself">
     <van-card v-show="isShow"
-    
-
          thumb="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604677154651&di=93111c8f71cae33eb1cd664a1cf86ee6&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fb21bb051f81986184dd851494ced2e738ad4e664.jpg"
         >
        <template #footer>
@@ -16,6 +14,7 @@
       :title="use.nickname"
       :thumb="use.avatarUrl"
     />
+
     <van-grid>
       <van-grid-item icon="location" text="本地音乐" />
       <van-grid-item icon="audio" text="音乐" />
@@ -23,11 +22,12 @@
       <van-grid-item icon="live" text="视频"  @click="mv"/>
     </van-grid>
     <van-grid>
-      <van-grid-item icon="friends" text="我的好友" />
+      <van-grid-item icon="friends" text="我的好友"  @click="myfans"/>
       <van-grid-item icon="invition" text="收藏" />
       <van-grid-item icon="cluster" text="电台" />
       <van-grid-item icon="weapp-nav" text="音乐应用" />
     </van-grid>
+
     <van-tabs v-model="activeName">
       <van-tab title="创建歌单" name="a">
         <h3 v-show="isShow">
@@ -42,7 +42,6 @@
           @click="click(item)"
         />
       </van-tab>
-
       <van-tab title="收藏歌单" name="b">
         <h3 v-show="isShow">
             暂无收藏歌单，请登录后获取。
@@ -56,29 +55,28 @@
           @click="click(item)"
         />
       </van-tab>
-
       <van-tab title="最近播放" name="c">
         <h3 v-show="isShow">
             暂无收藏歌单，请登录后获取。
         </h3>
         <div id="main">
           <ul>
-            <li v-for="(v, i) in nearList" :key="v.id" @click="click1(i)">
+            <li v-for="(v, i) in nearList" :key="v.id" @click="click1(v,i)">
               <span> {{ v.name }}</span>
               <div>
-                <van-icon name="play-circle" />
+                <van-icon :name="v.bol?'play-circle-o':'pause-circle'" />
               </div>
             </li>
           </ul>
         </div>
       </van-tab>
+
     </van-tabs>
   </section>
 </template>
 
 <script scoped>
 import { info, near } from "../../unitls/Login";
-
 export default {
   data() {
     return {
@@ -95,6 +93,11 @@ export default {
     mv(){
       this.$router.push({name:'Commend'})
     },
+   loginClick(){ 
+      this.$router.push({name:"Login"})
+    },
+
+
     click(item) {
       this.$router.push({
         name: "Song",
@@ -106,21 +109,34 @@ export default {
         },
       });
     },
-    loginClick(){
+   
+    click1(v,i) {
+       this.nearList.forEach((v) => {
+        console.log(v.bol);
+        v.bol = true;
+      });
       
-      this.$router.push({name:"Login"})
+      this.nearList[i].bol = !this.nearList[i].bol;
+      if (this.num == i){
+        this.bus.$emit("pause");
+        v.bol = true;
+      } else {
+        this.num = i;
+        if (v.bol == false) {
+          this.bus.$emit("play", this.songList[i]);
+        } else {
+          this.bus.$emit("pause");
+        }
+      }
     },
-
-    click1(i) {
-      this.bus.$emit("play", this.nearList[i]);
-    },
-
+    myfans(){
+        this.$router.push({name:'Followeds',query:{id:this.use.userId}})
+    }
   },
   async created(){
       if(localStorage.getItem("user")){
-
             this.use = JSON.parse(localStorage.getItem("user"));
-            // console.log(this.use);
+            console.log(this.use.userId);
             const res = await info(this.use);
             // console.log(res.data.playlist);
             this.playList = res.data.playlist;
@@ -129,16 +145,16 @@ export default {
             // console.log(this.playList)
             const res1 = await near(this.use);
             // console.log(res1.data.playlist.tracks);
+
+            res1.data.playlist.tracks.forEach((v)=>{
+              v.bol=true
+            })
             this.nearList = res1.data.playlist.tracks;
             this.bus.$emit("near", this.nearList);
             this.ok=true
-
       }else{
-
             this.isShow=true
-
       }
-    
   },
 };
 </script>

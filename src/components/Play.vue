@@ -1,47 +1,41 @@
 <template>
-  <div class="play">
-    <van-tabs v-model="active" animated>
-      <van-tab title="歌词">
-        <section>
-          <div class="songwords" ref="songwords" v-html="songWords"></div>
-        </section>
-      </van-tab>
-      <van-tab title="正在播放">
-        <section>
-          <h3>{{ name }}</h3>
-          <h4>{{ artist }}</h4>
-          <div class="ball" ref="ball" @click="control">
-            <img
-              ref="img"
-              style="width: 100%"
-              :src="imgUrl ? imgUrl : record"
-            />
-          </div>
-          <div class="control">
-            <van-icon
-              :name="like == true ? 'like' : 'like-o'"
-              class="collect-btn"
-              color="red"
-              size="44"
-              @click="likeSong"
-            />
-          </div>
-        </section>
-      </van-tab>
-      <van-tab title="热门评论">
-        <section class="comment">
-          <h4 v-show="comments[0] ? false : true">歌曲暂无热门评论</h4>
-          <van-card
-            v-for="(item, index) in comments"
-            :key="index"
-            :desc="item.content"
-            :title="item.user.nickname"
-            :thumb="item.user.avatarUrl"
+  <van-tabs v-model="active" animated>
+    <van-tab title="歌词">
+      <section>
+        <div class="songwords" ref="songwords" v-html="songWords"></div>
+      </section>
+    </van-tab>
+    <van-tab title="正在播放">
+      <section>
+        <h3>{{ name }}</h3>
+        <h4>{{ artist }}</h4>
+        <div class="ball" ref="ball" @click="control">
+          <img ref="img" style="height: 100%" :src="imgUrl ? imgUrl : record" />
+        </div>
+        <div class="control">
+          <van-icon
+            :name="like == true ? 'like' : 'like-o'"
+            class="collect-btn"
+            color="red"
+            size="44"
+            @click="likeSong"
           />
-        </section>
-      </van-tab>
-    </van-tabs>
-  </div>
+        </div>
+      </section>
+    </van-tab>
+    <van-tab title="热门评论">
+      <section class="comment">
+        <h4 v-show="comments[0] ? false : true">歌曲暂无热门评论</h4>
+        <van-card
+          v-for="(item, index) in comments"
+          :key="index"
+          :desc="item.content"
+          :title="item.user.nickname"
+          :thumb="item.user.avatarUrl"
+        />
+      </section>
+    </van-tab>
+  </van-tabs>
 </template>
 
 <script>
@@ -75,7 +69,10 @@ export default {
     // 获取监听事件分发的歌曲信息
     async play(obj) {
       let SongWordsResult = await getSongWords(obj.id);
-      this.songWords = SongWordsResult.replaceAll(/\[(.+?)\]/g, "<br>");
+      // console.log(SongWordsResult);
+
+      this.songWords = SongWordsResult.replaceAll(/\[(.+?)\]/g, "</p><p>");
+      console.log(this.songWords);
       let commentResult = await getSongComment(obj.id);
       this.comments = commentResult;
       this.name = obj.name;
@@ -130,9 +127,13 @@ export default {
   height: 2rem;
   border-radius: 50%;
   animation: rotate 10s linear infinite;
-  animation-play-state: paused;
+  /* animation-play-state: paused; */
   overflow: hidden;
 }
+.ball img {
+  width: 100%;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);

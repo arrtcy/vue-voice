@@ -52,7 +52,7 @@ export default {
       // console.log(v);
       let res = await getlyric(v.id); //.catch((err) => console.log(err));
       let obj1 = {};
-      if (res.data.lrc.lyric) {
+      if (res.data.lrc && res.data.lrc.lyric) {
         obj1.lrc = res.data.lrc.lyric;
       } else {
         obj1.lrc = "暂无歌词";

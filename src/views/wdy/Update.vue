@@ -32,7 +32,6 @@
   />
   <van-field
     v-model="province"
-    
     name="省份"
     label="省份"
     placeholder="省份"
@@ -40,7 +39,6 @@
   />
   <van-field
     v-model="signature"
-    
     name="用户签名"
     label="用户签名"
     placeholder="用户签名"
@@ -54,7 +52,6 @@
     </van-button>
   </div>
 </van-form>
-
     </section>
 </template>
 
@@ -73,7 +70,7 @@ export default {
   },
     methods: {
     afterRead(file) {
-      // 此时可以自行将文件上传至服务器
+      
       console.log(file);
     },
      async onSubmit() {
