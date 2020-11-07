@@ -90,6 +90,12 @@ const routes = [
     component: () => import("../views/wdy/Update.vue"),
   },
   {
+    path: "/followeds",
+    name: "Followeds",
+    meta: { title: "修改" },
+    component: () => import("../views/wdy/Followeds.vue"),
+  },
+  {
     path: "/find",
     name: "Find",
     component: () => import("../views/nan/Find.vue"),

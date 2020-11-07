@@ -89,7 +89,7 @@ export default {
   created() {
     this.bus.$on("info", this.info);
     this.perinfo = JSON.parse(localStorage.getItem("user"));
-    // console.log(this.$route.query)
+    console.log(this.$route.query)
     this.obj = this.$route.query;
     // console.log(this.obj)
     this.song(this.obj);
