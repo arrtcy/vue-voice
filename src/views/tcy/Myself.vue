@@ -16,17 +16,12 @@
     />
 
     <van-grid>
-      <van-grid-item icon="location" text="本地音乐" />
-      <van-grid-item icon="audio" text="音乐" />
-      <van-grid-item icon="checked" text="下载" />
+      <van-grid-item icon="location" text="本地音乐" @click="bd" />
+      <van-grid-item icon="audio" text="音乐"  @click="yy"/>
+      <van-grid-item icon="friends" text="我的好友"  @click="myfans"/>
       <van-grid-item icon="live" text="视频" />
     </van-grid>
-    <van-grid>
-      <van-grid-item icon="friends" text="我的好友"  @click="myfans"/>
-      <van-grid-item icon="invition" text="收藏" />
-      <van-grid-item icon="cluster" text="电台" />
-      <van-grid-item icon="weapp-nav" text="音乐应用" />
-    </van-grid>
+    
 
     <van-tabs v-model="activeName">
       <van-tab title="创建歌单" name="a">
@@ -76,6 +71,7 @@
 </template>
 
 <script scoped>
+import { Toast } from 'vant';
 import { info, near } from "../../unitls/Login";
 export default {
   data() {
@@ -86,14 +82,20 @@ export default {
       topplayList:[],
       nearList: [],
       isShow:false,
-      ok:false
+      ok:false,
     };
   },
   methods: {
    loginClick(){ 
       this.$router.push({name:"Login"})
     },
-
+    bd(){
+      Toast('没有下载');
+    },
+    yy(){
+      Toast('随便听');
+    },
+    
 
     click(item) {
       this.$router.push({
