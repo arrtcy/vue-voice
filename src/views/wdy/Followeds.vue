@@ -2,60 +2,55 @@
   <section>
     <van-tabs v-model="active">
       <van-tab title="我的粉丝">
-        <div class="fredinfo"  v-for="item in followeds" :key="item.id">
+        <div class="fredinfo" v-for="item in followeds" :key="item.id">
           <img :src="item.avatarUrl" alt="" />
           <div class="right">
-            <span>名字：{{item.nickname}}</span> 
-            <p>个性签名:{{item.signature}}</p>
-            
+            <span>名字：{{ item.nickname }}</span>
+            <p>个性签名:{{ item.signature }}</p>
           </div>
         </div>
       </van-tab>
-      <van-tab title="我的关注"> 
-           <div class="fredinfo"  v-for="item in concern" :key="item.id">
+      <van-tab title="我的关注">
+        <div class="fredinfo" v-for="item in concern" :key="item.id">
           <img :src="item.avatarUrl" alt="" />
           <div class="right">
-            <span>名字：{{item.nickname}}</span> 
-            <p>个性签名:{{item.signature}}</p>
-            
+            <span>名字：{{ item.nickname }}</span>
+            <p>个性签名:{{ item.signature }}</p>
           </div>
         </div>
-
       </van-tab>
     </van-tabs>
   </section>
 </template>
 
 <script>
-import {fans,concern} from '../../unitls/Login'
+import { fans, concern } from "../../unitls/Login";
 export default {
   data() {
     return {
       active: 0,
-      followeds:[],
-      concern:[]
-
+      followeds: [],
+      concern: [],
     };
   },
- async created() {
+  async created() {
     // console.log(this.$route.query)
-    const res=await fans(this.$route.query)
+    const res = await fans(this.$route.query);
     // console.log(res.data.followeds)
-    this.followeds=res.data.followeds
-    
-    const res1=await concern(this.$route.query)
+    this.followeds = res.data.followeds;
+
+    const res1 = await concern(this.$route.query);
     // console.log(res1.data.follow)
-    this.concern=res1.data.follow
+    this.concern = res1.data.follow;
     //  console.log(this.concern)
-   
-  }
+  },
 };
 </script>
 
 <style scoped>
 .fredinfo {
   padding: 0.15rem;
-  background-color: rgb(240,240,240);
+  background-color: rgb(240, 240, 240);
   width: 100%;
   height: 1.2rem;
   display: flex;

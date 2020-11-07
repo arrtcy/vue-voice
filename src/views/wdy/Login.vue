@@ -21,7 +21,7 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"
       />
-      <div style="margin: 16px;">
+      <div style="margin: 16px">
         <van-button round block type="info" native-type="submit">
           登录
         </van-button>
@@ -37,7 +37,7 @@
       <div class="login-reg">
         <router-link :to="{ name: 'Reg' }">没有账号，我要注册！</router-link>
       </div>
-      <div class="agreement ">
+      <div class="agreement">
         <input
           type="checkbox"
           @click="hand"

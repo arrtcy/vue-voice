@@ -11,21 +11,19 @@
 </template>
 
 <script>
-import {comment} from '../../unitls/Login'
+import { comment } from "../../unitls/Login";
 export default {
   data() {
     return {
       commentList: [],
-
     };
   },
   async created() {
     console.log(this.$route.query);
-    const res= await comment(this.$route.query)
+    const res = await comment(this.$route.query);
 
-    console.log(res.data.hotComments)
-    this.commentList=res.data.hotComments
-   
+    console.log(res.data.hotComments);
+    this.commentList = res.data.hotComments;
   },
 };
 </script>

@@ -13,14 +13,14 @@
       />
     </div>
     <div id="nav">
-      <p><van-icon name="bulb-o" size="24px" />创作者中心</p>
+      <p @click="hello"><van-icon name="bulb-o" size="24px" />创作者中心</p>
     </div>
     <div id="main">
       <p>音乐服务</p>
       <hr />
       <p><van-icon name="bullhorn-o" size="24px" />听歌识曲</p>
-      <p><van-icon name="comment-circle-o" size="24px" />云村有票</p>
-      <p><van-icon name="shopping-cart-o" size="24px" />商城</p>
+      <p @click="piao"><van-icon name="comment-circle-o" size="24px" />云村有票</p>
+      <p @click="buy"><van-icon name="shopping-cart-o" size="24px" />商城</p>
       <p><van-icon name="points" size="24px" />游戏专区</p>
       <p><van-icon name="music-o" size="24px" />口袋彩铃</p>
     </div>
@@ -29,7 +29,7 @@
       <hr />
       <p><van-icon name="aim" size="24px" />个性装扮</p>
       <p @click="off"><van-icon name="clock-o" size="24px" />定时关闭</p>
-      <p><van-icon name="records" size="24px" />音乐黑名单</p>
+      <p @click="blc"><van-icon name="records" size="24px" />音乐黑名单</p>
       <p><van-icon name="points" size="24px" />边听边存</p>
       <p><van-icon name="description" size="24px" />我的订单</p>
     </div>
@@ -74,13 +74,39 @@ export default {
       localStorage.clear("uid");
       this.$router.push({ name: "Login" });
     },
-    off() {
+   
+    hello() {
+      
+      Dialog.confirm({
+        title: "仗键走天涯",
+        message: "田崇阳\n刘甜\n张南\n王冬阳",
+      });
+    },
+    piao() {
+      Dialog.confirm({
+        title: "云村有票",
+        message: "来晚了，卖完了。",
+      });
+    },
+    buy(){
+       Dialog.confirm({
+        title: "商城",
+        message: "进货去了-。-",
+      });
+    },
+     off() {
       Dialog.confirm({
         title: "定时关闭",
         message: "10分钟\n20分钟\n30分钟\n45分钟\n60分钟",
       })
         .then(() => {})
         .catch(() => {});
+    },
+    blc(){
+        Dialog.confirm({
+        title: "黑名单",
+        message: "HTML\nCSS\nJS",
+      })
     },
   },
 };
