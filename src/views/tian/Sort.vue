@@ -3,13 +3,13 @@
     <!-- 插件 -->
     <div class="stacked-cards">
       <ul>
-        <li class="li1" @click="clickShow($event)">
+        <li class="li1">
           <video
             poster="http://pic1.win4000.com/mobile/2020-11-04/5fa2526d5a971_250_350.jpg"
           ></video>
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
-        <li class="li2" @click="clickShow($event)">
+        <li class="li2">
           <video
             poster="http://pic1.win4000.com/mobile/2020-11-02/5f9fccd22f2b6_250_350.jpg"
           ></video>
@@ -24,13 +24,13 @@
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
 
-        <li class="li4" @click="clickShow($event)">
+        <li class="li4">
           <video
             poster="http://pic1.win4000.com/mobile/2020-10-27/5f97b39cef663_250_350.jpg"
           ></video>
           <van-icon color="#ddd" name="play-circle" size="0.6rem" />
         </li>
-        <li class="li5" @click="clickShow($event)">
+        <li class="li5">
           <video
             poster="http://pic1.win4000.com/mobile/2020-09-27/5f7023c9e0287_250_350.jpg"
           ></video>
@@ -136,11 +136,6 @@ export default {
     },
     commendJe() {
       this.$router.push({ name: "commendJe" });
-    },
-    clickShow(event) {
-      console.log(event.target);
-      console.log(111);
-      //   this.isShow = true;
     },
   },
   created() {},

@@ -78,18 +78,12 @@ const routes = [
     component: () => import("../views/wdy/Reg.vue"),
   },
   {
-    path: "/presonal",
-    name: "Presonal",
-    meta: { title: "个人信息" },
-    component: () => import("../views/wdy/Presonal.vue"),
-  },
-  {
     path: "/update",
     name: "Update",
     meta: { title: "修改" },
     component: () => import("../views/wdy/Update.vue"),
   },
- 
+
   {
     path: "/find",
     name: "Find",
