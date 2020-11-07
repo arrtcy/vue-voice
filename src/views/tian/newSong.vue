@@ -24,7 +24,8 @@ export default {
     name:"Chinese",
     data(){ 
     return{
-       list:[]
+       list:[],
+       num:0.2,
     }
    
 
@@ -36,16 +37,32 @@ this.LoadData()
 },
 methods:{
   playList(item,i){
-      this.list[i].btn=!this.list[i].btn
-     /*  console.log(item)
-      console.log(item.id)
-      console.log(item.name)
-      console.log(item.artists[0].name)
-      console.log(item.album.picUrl) */
+     
+    
     let a = item.artists[0].name
     console.log({id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.album.picUrl}});
     let obj = {id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.album.picUrl}}
-     this.bus.$emit('play',obj)
+   
+   this.list.forEach((v) => {
+        console.log(v.btn);
+        v.btn = true;
+      });
+   this.list[i].btn=!this.list[i].btn
+      if (this.num == i){
+        this.bus.$emit("pause");
+        item.btn = true;
+      } else {
+        this.num = i;
+        if (item.btn == false) {
+          this.bus.$emit("play",obj);
+        } else {
+          this.bus.$emit("pause");
+        }
+      }
+
+
+
+
     },
 
 
