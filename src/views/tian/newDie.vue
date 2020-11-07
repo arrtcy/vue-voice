@@ -38,39 +38,40 @@ export default {
       loading: false,
       finished: false,
       refreshing: false,
+      num:0.5,
     };
   },
   created() {},
   methods: {
     //点击播放
+   
    async playMusic(item,i){
-      this.list[i].bol=!this.list[i].bol,
-      // console.log(item)
-      // console.log(item.id)
-      // console.log(item.name)
-      // console.log(item.picUrl)
       console.log(item.song.artists[0].name)
-      //{id,name,ar[0].name,al{picUrl}}
-    //  this.obj.name = item.name;
-    //  this.obj.id=item.id;
-    //  this.obj.ar[0].name = item.song.artists[0].name;
      let a=item.song.artists[0].name
-    //  this.obj.al.picUrl = item.picUrl;
     // console.log({id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.picUrl}});
      let obj={id:item.id,name:item.name,ar:[{name:a}],al:{picUrl:item.picUrl}}
-     this.bus.$emit('play',obj)
+     
+     //this.bus.$emit('play',obj)
+     
+
+
+      this.list[i].btn=!this.list[i].btn
+      if(this.num == i){
+          this.bus.$emit('pause')
+           item.bol = true;
+      }else{
+
+        this.num = i;
+        if (item.bol == false) {
+          this.bus.$emit("play", obj);
+        } else {
+          this.bus.$emit("pause");
+        }
+
+      }
+
     },
 
-   /*  playClick(items) {
-      console.log(items);
-      console.log(items.artist.name);
-      console.log(items.copyrightId, items.name);
-      (this.obj.id = items.copyrightId),
-        (this.obj.name = items.name),
-        (this.obj1.name = items.artist.name);
-      this.obj.ar = [this.obj1];
-      console.log(this.obj);
-    }, */
 
     /* 加载更多 */
     async onLoad() {

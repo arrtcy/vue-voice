@@ -86,7 +86,8 @@ export default {
       topplayList:[],
       nearList: [],
       isShow:false,
-      ok:false
+      ok:false,
+      num:0.4,
     };
   },
   methods: {
