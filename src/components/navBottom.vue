@@ -94,6 +94,7 @@ export default {
       }
     },
     top() {
+      console.log(568978);
       this.bus.$emit("lrc");
     },
     control() {

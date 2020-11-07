@@ -60,14 +60,10 @@ export default {
     // 事件总线监听分发歌曲信息时间
     this.bus.$on("play", this.play);
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.rota();
-    });
-  },
   methods: {
     // 获取监听事件分发的歌曲信息
     async play(obj) {
+      console.log(568978);
       let SongWordsResult = await getSongWords(obj.id);
       // console.log(SongWordsResult);
 
@@ -113,9 +109,6 @@ export default {
     },
     control() {
       this.bus.$emit("pause");
-    },
-    rota() {
-      console.log(this.$refs.img);
     },
   },
 };

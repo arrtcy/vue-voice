@@ -96,8 +96,6 @@
         推荐节目
       </li>
     </ul>
-
-    <div class="kong"></div>
   </section>
 </template>
 
@@ -160,7 +158,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
 }
 .ul li {
   padding: 0;

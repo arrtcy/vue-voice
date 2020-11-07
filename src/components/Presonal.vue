@@ -7,10 +7,9 @@
         color="red"
       />
       <van-card
-        :desc="use.signature"
-        :title="use.nickname"
-        :thumb="use.avatarUrl"
-        @click="click1"
+        :desc="use.signature ? use.signature : '还未进行登录'"
+        :title="use.nickname ? use.nickname : ''"
+        :thumb="use.avatarUrl ? use.avatarUrl : '/img/timg.jpg'"
       />
     </div>
     <div id="nav">
@@ -59,8 +58,10 @@ export default {
   },
   created() {
     // this.bus.$on("info", this.info);
-    this.use = JSON.parse(localStorage.getItem("user"));
-    console.log(this.use);
+    if (localStorage.getItem("user")) {
+      this.use = JSON.parse(localStorage.getItem("user"));
+      console.log(this.use);
+    }
   },
   methods: {
     showPopup() {
@@ -80,9 +81,6 @@ export default {
       })
         .then(() => {})
         .catch(() => {});
-    },
-    click1() {
-      this.$router.push({ name: "Update" });
     },
   },
 };

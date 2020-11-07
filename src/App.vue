@@ -3,16 +3,14 @@
     <headerTop />
     <router-view />
     <navBottom />
-
+    <van-popup
+      v-model="isshow"
+      position="left"
+      :style="{ width: '85%', height: '100%' }"
+    >
+      <Personal></Personal>
+    </van-popup>
     <keep-alive>
-      <van-popup
-        v-model="isshow"
-        position="left"
-        :style="{ width: '85%', height: '100%' }"
-      >
-        <Personal></Personal>
-      </van-popup>
-
       <van-popup
         :lazy-render="false"
         position="bottom"
@@ -35,7 +33,7 @@ export default {
   data() {
     return {
       show: false,
-      isshow: true,
+      isshow: false,
     };
   },
   created() {
@@ -44,6 +42,7 @@ export default {
   },
   methods: {
     showPopup() {
+      console.log(123);
       this.show = true;
     },
     proup() {
@@ -54,6 +53,7 @@ export default {
     navBottom,
     headerTop,
     Play,
+    // eslint-disable-next-line vue/no-unused-components
     Personal,
   },
 };
