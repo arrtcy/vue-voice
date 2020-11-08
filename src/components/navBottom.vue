@@ -31,7 +31,7 @@ export default {
         {
           title: "情非得已",
           artist: "田崇阳",
-          src: "/mp3/小F4 - 情非得已.mp3",
+          src: "/mp3/reset.mp3",
           lrc: "心声，倾听你的心声",
           pic: "/img/mv.png",
         },
