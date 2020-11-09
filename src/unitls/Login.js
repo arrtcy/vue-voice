@@ -14,6 +14,29 @@ export function LOGIN(parmas) {
 // }
 
 
+//注册
+export function reg(v) {
+  console.log(v)
+  return axios.get(
+    `https://music.api.mcloc.cn/register/cellphone?phone=${v.phone}&password=${v.password}&captcha=${v.captcha}&nickname=${v.nickname}`
+  );
+}
+
+//发送验证码
+export function send(v) {
+  console.log(v);
+  return axios.get(`https://music.api.mcloc.cn/captcha/sent?phone=${v}`);
+}
+
+
+//验正验证码
+export function Captcha(v) {
+  console.log(v);
+  return axios.get(
+    `https://music.api.mcloc.cn/captcha/verify?phone=${v.phone}&captcha=${v.captcha}`
+  );
+}
+
 //个人信息
 export function info(v) {
   return axios.get(`https://music.api.mcloc.cn/user/playlist?uid=${v.userId}`);
