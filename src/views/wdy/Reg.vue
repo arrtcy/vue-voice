@@ -1,10 +1,7 @@
 <template>
   <div class="Reg">
     <div class="content">
-      <img
-        src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png"
-        alt=""
-      />
+      <img src="/img/logo.png" alt="logo" />
 
       <van-form @submit="onSubmit">
         <van-field
@@ -107,6 +104,9 @@ export default {
   position: relative;
 }
 .content img {
-  margin-left: 0.25rem;
+  width: 50%;
+  display: block;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 </style>

@@ -91,4 +91,8 @@ section {
 .van-tag {
   margin: 5px 8px;
 }
+.van-card__title {
+  font-size: 0.18rem;
+  padding: 0.05rem 0;
+}
 </style>

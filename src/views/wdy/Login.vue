@@ -1,9 +1,6 @@
 <template>
   <div class="login">
-    <img
-      src="http://v2.logodashi.com/FileUpload/OldPic/635464924814548000.png"
-      alt="logo"
-    />
+    <img src="/img/logo.png" alt="logo" />
 
     <van-form @submit="onSubmit">
       <van-field
@@ -52,7 +49,7 @@
 
 <script>
 import { LOGIN } from "../../unitls/Login";
-import { Notify } from 'vant';
+import { Notify } from "vant";
 export default {
   data() {
     return {
@@ -73,7 +70,7 @@ export default {
         const res = await LOGIN(parmas);
         // console.log(res.data.profile);
         if (res.status == 200) {
-         Notify('登陆成功');
+          Notify("登陆成功");
           localStorage.setItem("uid", res.data.account.id);
           localStorage.setItem("user", JSON.stringify(res.data.profile));
           this.$router.push({ name: "Serach" });
@@ -81,7 +78,7 @@ export default {
           alert("请检查用户名");
         }
       } else {
-      alert('请同意协议')
+        alert("请同意协议");
       }
     },
   },
@@ -119,7 +116,9 @@ export default {
   text-align: center;
 }
 img {
+  width: 50%;
   display: block;
-  margin-left: 0.2rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 </style>

@@ -49,7 +49,11 @@
         <h3 v-show="isShow">暂无收藏歌单，请登录后获取。</h3>
         <div id="main">
           <ul>
-            <li v-for="(v, i) in nearList" :key="v.id" @click="click1(v, i)">
+            <li
+              v-for="(v, i) in nearList"
+              :key="v.id"
+              @click="click1(v, v.bol, i)"
+            >
               <span> {{ v.name }}</span>
               <div>
                 <van-icon :name="v.bol ? 'play-circle-o' : 'pause-circle'" />
@@ -73,9 +77,9 @@ export default {
       playList: [],
       topplayList: [],
       nearList: [],
-      isShow:false,
-      ok:false,
-      num:0.4,
+      isShow: false,
+      ok: false,
+      num: 0.4,
     };
   },
   methods: {
@@ -104,23 +108,18 @@ export default {
       });
     },
 
-    click1(v, i) {
+    click1(v, bol, i) {
       this.nearList.forEach((v) => {
         // console.log(v.bol);
         v.bol = true;
       });
-
-      this.nearList[i].bol = !this.nearList[i].bol;
+      this.nearList[i].bol = !bol;
       if (this.num == i) {
         this.bus.$emit("pause");
-        v.bol = true;
       } else {
         this.num = i;
-        if (v.bol == false) {
-          this.bus.$emit("play", this.songList[i]);
-        } else {
-          this.bus.$emit("pause");
-        }
+
+        this.bus.$emit("play", this.songList[i]);
       }
     },
     myfans() {

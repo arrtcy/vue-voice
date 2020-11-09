@@ -78,14 +78,9 @@ export default {
       this.songList[i].bol = !bol;
       if (this.num == i) {
         this.bus.$emit("pause");
-        item.bol = true;
       } else {
         this.num = i;
-        if (item.bol == false) {
-          this.bus.$emit("play", this.songList[i]);
-        } else {
-          this.bus.$emit("pause");
-        }
+        this.bus.$emit("play", this.songList[i]);
       }
       // console.log(this.num, i);
     },

@@ -3,15 +3,15 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import Vant from "vant";
+import "default-passive-events";
 import "vant/lib/index.css";
 import { Swipe, SwipeItem } from "vant";
 import { Card } from "vant";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
-
 /* ------------------------------------------------- */
-import { Lazyload } from 'vant';
+import { Lazyload } from "vant";
 Vue.use(Lazyload);
 // 注册时可以配置额外的选项
 Vue.use(Lazyload, {

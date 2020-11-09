@@ -51,14 +51,9 @@ export default {
       this.list[i].btn = !bol;
       if (this.num == i) {
         this.bus.$emit("pause");
-        item.btn = true;
       } else {
         this.num = i;
-        if (item.btn == false) {
-          this.bus.$emit("play", obj);
-        } else {
-          this.bus.$emit("pause");
-        }
+        this.bus.$emit("play", obj);
       }
     },
 
