@@ -4,7 +4,7 @@
     <van-tabbar v-model="active" :fixed="false">
       <van-icon
         name="exchange"
-        color="#1989fa"
+        color="#333333"
         size="20"
         class="icon"
         @click="showpop"

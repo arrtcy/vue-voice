@@ -1,19 +1,25 @@
 import axios from "axios";
 
-//登录
-export function LOGIN(parmas) {
-     return axios.get(
-       `http://net-music.penkuoer.com/login/cellphone?phone=${parmas.phone}&password=${parmas.password}`
-     );
-   }
+
 //修改个人信息
 // export function update(parmas){
 //   return axios.post(
 //     `http://net-music.penkuoer.com/user/update?gender=${parmas.gender}&signature=${parmas.signature}&city=${parmas.city}&nickname=${parmas.nickname}&birthday=${parmas.birthday}&province=${parmas.province}`
 //   );
 // }
+//更换头像
+// export function upimg(p) {
+//   return axios.post(`http://net-music.penkuoer.com/avatar/upload`,{p});
+// }
 
 
+//登录
+export function LOGIN(parmas) {
+     return axios.get(
+       `http://net-music.penkuoer.com/login/cellphone?phone=${parmas.phone}&password=${parmas.password}`
+     );
+   }
+   
 //注册
 export function reg(v) {
   console.log(v)

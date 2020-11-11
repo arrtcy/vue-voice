@@ -118,10 +118,10 @@ export default {
         this.bus.$emit("pause");
       } else {
         this.num = i;
-
         this.bus.$emit("play", this.songList[i]);
       }
     },
+
     myfans() {
       this.$router.push({ name: "Followeds", query: { id: this.use.userId } });
     },
@@ -138,7 +138,6 @@ export default {
       // console.log(this.playList)
       const res1 = await near(this.use);
       // console.log(res1.data.playlist.tracks);
-
       res1.data.playlist.tracks.forEach((v) => {
         v.bol = true;
       });

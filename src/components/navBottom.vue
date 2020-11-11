@@ -29,9 +29,9 @@ export default {
     return {
       audio: [
         {
-          title: "情非得已",
-          artist: "田崇阳",
-          src: "/mp3/reset.mp3",
+          title: "暂无歌曲",
+          artist: "王冬阳",
+          src: "#",
           lrc: "心声，倾听你的心声",
           pic: "/img/mv.png",
         },

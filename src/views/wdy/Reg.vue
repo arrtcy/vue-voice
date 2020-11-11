@@ -2,7 +2,7 @@
   <div class="Reg">
     <div class="content">
       <img src="/img/logo.png" alt="logo" />
-
+      <div id="box" @click="back"><van-icon name="arrow-left"  size="20"/>返回</div> 
       <van-form @submit="onSubmit">
         <van-field
           v-model="nickname"
@@ -37,7 +37,9 @@
           placeholder="请输入验证码"
           :rules="[{ required: true, message: '请输入验证码' }]"
         />
-        <van-button type="danger" @click="cta">发送验证码</van-button>
+        <van-button type="danger" @click="cta" class="yan">{{
+        this.bol?this.fasong+'s':this.fasong
+     }}</van-button>
 
         <div style="margin: 16px">
           <van-button round block type="info" native-type="submit">
@@ -55,7 +57,7 @@
 </template>
 
 <script>
-import { reg ,send,Captcha} from "../../unitls/Login";
+import { reg, send, Captcha } from "../../unitls/Login";
 export default {
   data() {
     return {
@@ -63,6 +65,8 @@ export default {
       password: "",
       phone: "",
       captcha: "",
+      fasong: "发送验证码",
+      bol:false
     };
   },
   methods: {
@@ -72,22 +76,37 @@ export default {
       let password = this.password;
       let phone = this.phone;
       let captcha = this.captcha;
-      let parmas={nickname,password,phone,captcha}
-      let abc={phone,captcha}
-      const res = await reg(parmas)
-       console.log(res);
-    const  res1 =await Captcha(abc)
-    console.log(res1)
-      // { xhrFields: { withCredentials: true } });
-     
+      let parmas = { nickname, password, phone, captcha };
+      let abc = { phone, captcha };
+      //注册
+      const res = await reg(parmas);
+      console.log(res);
+      //验证验证码
+      const res1 = await Captcha(abc);
+      console.log(res1);
     },
-     async cta(){
-       let phone = this.phone;
-       console.log(phone)
-       const res1=await send(phone)
-       console.log(res1)
-   }
+    async cta() {
+      let phone = this.phone;
+      console.log(phone);
+      //发送验证码
+      const res1 = await send(phone);
+      console.log(res1);
+      this.fasong =60;
+      this.bol=true
+      let time = setInterval(() => {
+          this.fasong--
+        if (this.fasong ==0) {
+          this.fasong="发送验证码"
+          this.bol=false
+          clearInterval(time);
+        }
+       
+      }, 1000);
+    },
 
+     back(){
+      this.$router.push({name:'Serach'})
+    }
   },
 };
 </script>
@@ -109,13 +128,24 @@ export default {
 .reg-login {
   text-align: center;
 }
-.capt {
-  position: relative;
+
+.yan {
+  width: 0.8rem;
+  position: absolute;
+  top: 4.2rem;
+  right: 0rem;
 }
 .content img {
   width: 50%;
   display: block;
   margin-left: 1rem;
   margin-bottom: 0.5rem;
+}
+
+#box{
+  display: flex;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.1rem;
 }
 </style>

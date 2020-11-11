@@ -45,7 +45,7 @@ async LoadData(){
 }
 </script>
 
-<style>
+<style scoped>
 
 ul{
   display: flex;

@@ -97,7 +97,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .van-list {
   display: flex;
   flex-wrap: wrap;

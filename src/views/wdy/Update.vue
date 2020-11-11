@@ -1,6 +1,6 @@
 <template>
   <section class="update">
-    <van-uploader :after-read="afterRead" />
+    <van-uploader :after-read="afterRead"/>
     <van-form @submit="onSubmit">
       <van-field
         v-model="nickname"
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { update } from "../../unitls/Login";
+import { update,upimg } from "../../unitls/Login";
 export default {
   data() {
     return {
@@ -65,11 +65,15 @@ export default {
       city: "",
       province: "",
       signature: "",
+    
     };
   },
   methods: {
-    afterRead(file) {
-      console.log(file);
+   async afterRead(file) {
+     let imgFile=new FormData()
+     imgFile.append('imgFile',file)
+       const res1=await upimg(imgFile)
+      console.log(res1)
     },
     async onSubmit() {
       let nickname = this.nickname;
@@ -79,8 +83,10 @@ export default {
       let province = this.province;
       let signature = this.signature;
       let parmas = { nickname, gender, birthday, city, province, signature };
+     
       const res = await update(parmas);
       console.log(res);
+    
     },
   },
 };

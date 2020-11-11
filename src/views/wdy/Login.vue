@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <img src="/img/logo.png" alt="logo" />
-
+   <div id="box" @click="back"><van-icon name="arrow-left"  size="20"/>返回</div> 
     <van-form @submit="onSubmit">
       <van-field
         v-model="phone"
@@ -81,6 +81,9 @@ export default {
         alert("请同意协议");
       }
     },
+    back(){
+     this.$router.push({name:'Serach'})
+    }
   },
 };
 </script>
@@ -120,5 +123,11 @@ img {
   display: block;
   margin-left: 1rem;
   margin-bottom: 0.5rem;
+}
+#box{
+  display: flex;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.1rem;
 }
 </style>

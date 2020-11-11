@@ -104,6 +104,7 @@ export default {
         message: "HTML\nCSS\nJS",
       });
     },
+   
   },
 };
 </script>
@@ -134,7 +135,7 @@ export default {
 
 #main p {
   display: flex;
-  margin-top: 0.08rem;
+  margin-top: 0.2rem;
 }
 
 #main p:hover {
@@ -142,7 +143,7 @@ export default {
 }
 
 #footer p {
-  margin-top: 0.08rem;
+  margin-top: 0.2rem;
   display: flex;
 }
 
@@ -169,9 +170,6 @@ export default {
   display: flex;
   align-items: center;
   width: fit-content;
-  /* border: 1px solid; */
 }
-/* #set p span {
-  margin-right: 0.5rem;
-} */
+
 </style>

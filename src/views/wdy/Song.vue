@@ -152,4 +152,7 @@ export default {
   line-height: 0.5rem;
   font-size: 0.3rem;
 }
+.right{
+  flex-direction: row;
+}
 </style>

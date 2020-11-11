@@ -4,7 +4,7 @@
     <div class="main" v-for="item in commentList" :key="item.id">
       <img :src="item.user.avatarUrl" alt="" />
       <div class="right">
-        <span>用户：{{ item.user.nickname }}</span>
+       <h4>用户：{{ item.user.nickname }}</h4> 
         <p>评论:{{ item.content }}</p>
       </div>
     </div>
@@ -35,9 +35,10 @@ export default {
 
 <style>
 .main {
-  padding: 0.15rem;
-  background-color: rgb(240, 240, 240);
-  width: 100%;
+  padding: 0.1rem;
+  background-color:#eeeeee;
+   margin:0 auto;
+  width: 85%;
   height: 1.2rem;
   display: flex;
   border: 1px solid;
@@ -45,9 +46,10 @@ export default {
 }
 
 .main img {
-  width: 30%;
+  width: 34%;
   height: 1.2rem;
   border: 1px solid;
+ 
 }
 .right {
   display: flex;

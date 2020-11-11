@@ -162,6 +162,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
   /* align-items: center; */
+  flex-direction: row;
 }
 .ul li {
   padding: 0;

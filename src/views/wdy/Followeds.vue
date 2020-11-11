@@ -5,7 +5,7 @@
         <div class="fredinfo" v-for="item in followeds" :key="item.id">
           <img :src="item.avatarUrl" alt="" />
           <div class="right">
-            <span>名字：{{ item.nickname }}</span>
+            <span style="font-weight:600">名字：{{ item.nickname }}</span>
             <p>个性签名:{{ item.signature }}</p>
           </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="fredinfo" v-for="item in concern" :key="item.id">
           <img :src="item.avatarUrl" alt="" />
           <div class="right">
-            <span>名字：{{ item.nickname }}</span>
+            <span style="font-weight:600">名字：{{ item.nickname }}</span>
             <p>个性签名:{{ item.signature }}</p>
           </div>
         </div>
@@ -49,9 +49,10 @@ export default {
 
 <style scoped>
 .fredinfo {
-  padding: 0.15rem;
+  padding: 0.1rem;
   background-color: rgb(240, 240, 240);
-  width: 100%;
+  width: 85%;
+  margin:0 auto;
   height: 1.2rem;
   display: flex;
   /* border: 1px solid; */
@@ -59,7 +60,7 @@ export default {
 }
 
 .fredinfo img {
-  width: 30%;
+  width: 34%;
   height: 1.2rem;
   border: 1px solid;
 }
