@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <img src="/img/logo.png" alt="logo" />
+    <img src="../../assets/logo.png" alt="logo" />
    <div id="box" @click="back"><van-icon name="arrow-left"  size="20"/>返回</div> 
     <van-form @submit="onSubmit">
       <van-field

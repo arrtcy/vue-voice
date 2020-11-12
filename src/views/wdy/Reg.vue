@@ -1,7 +1,7 @@
 <template>
   <div class="Reg">
     <div class="content">
-      <img src="/img/logo.png" alt="logo" />
+      <img src="../../assets/logo.png" alt="logo" />
       <div id="box" @click="back"><van-icon name="arrow-left"  size="20"/>返回</div> 
       <van-form @submit="onSubmit">
         <van-field
@@ -36,11 +36,14 @@
           label="验证码"
           placeholder="请输入验证码"
           :rules="[{ required: true, message: '请输入验证码' }]"
-        />
-        <van-button type="danger" @click="cta" class="yan">{{
-        this.bol?this.fasong+'s':this.fasong
+        >
+       
+      <template #button>
+    <van-button size="small" type="primary"  @click="cta">{{
+        bol?fasong+'s':fasong
      }}</van-button>
-
+  </template>
+     </van-field>
         <div style="margin: 16px">
           <van-button round block type="info" native-type="submit">
             注册
@@ -129,12 +132,7 @@ export default {
   text-align: center;
 }
 
-.yan {
-  width: 0.8rem;
-  position: absolute;
-  top: 4.2rem;
-  right: 0rem;
-}
+
 .content img {
   width: 50%;
   display: block;

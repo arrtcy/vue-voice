@@ -80,7 +80,7 @@ ul{
  
   border-radius: 5px;
   
-  background:url('/img/beg3.jpg') center/cover no-repeat;
+  background:url('../../assets/beg3.jpg') center/cover no-repeat;
 }
 .img2{
   display:block;

@@ -123,7 +123,7 @@ export default {
   height: 1.3rem;
   border: 0.01rem solid black;
   border-radius: 5px;
-  background: url("/img/beg4.jpg") center/cover no-repeat;
+  background: url("../../assets/beg4.jpg") center/cover no-repeat;
   background-color: rgba(250, 244, 244, 0.966);
 }
 .img2 {
